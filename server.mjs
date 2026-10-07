@@ -31,6 +31,7 @@ function fetchPrograms() {
     const sourceFilePath = resolve(programDirectory, sourcePath);
     return {
       ...program,
+      slug: program.path.split('/')[0],
       source: sourceFilePath.startsWith(programDirectory + sep) && existsSync(sourceFilePath) ? sourcePath : null,
       size: statSync(filePath).size
     };
@@ -72,7 +73,8 @@ function sendSource(response, programPath, headOnly = false) {
 }
 
 function serveStatic(response, pathname, headOnly = false) {
-  const requested = pathname === '/' ? 'index.html' : pathname.slice(1);
+  const isProgramPage = /^\/program\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname);
+  const requested = pathname === '/' || isProgramPage ? 'index.html' : pathname.slice(1);
   const filePath = normalize(join(publicDirectory, requested));
   if (!filePath.startsWith(publicDirectory) || !existsSync(filePath) || !statSync(filePath).isFile()) {
     return false;

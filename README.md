@@ -9,16 +9,16 @@ machine-language payload is required.
 
 | Program | Type | Controls | Description | Run locally |
 | --- | --- | --- | --- | --- |
-| [Meteor Dodge](meteor-dodge/meteor-dodge.bas) | Arcade | `A`, `D`, `Q` | Dodge falling meteors and build your score. | [Run program](http://localhost:8134/?program=meteor-dodge%2Fmeteor-dodge.prg) |
-| [Code Breaker](code-breaker/code-breaker.bas) | Logic | `0`-`9`, `Q` | Deduce a four-digit secret in ten guesses. | [Run program](http://localhost:8134/?program=code-breaker%2Fcode-breaker.prg) |
-| [Submarine Hunt](submarine-hunt/submarine-hunt.bas) | Strategy | Row, Column, `Q` | Find three hidden submarines with limited sonar shots. | [Run program](http://localhost:8134/?program=submarine-hunt%2Fsubmarine-hunt.prg) |
-| [Lunar Lander](lunar-lander/lunar-lander.bas) | Simulation | `0`-`9`, `Q` | Choose engine burns and touch down gently. | [Run program](http://localhost:8134/?program=lunar-lander%2Flunar-lander.prg) |
-| [Memory Matrix](memory-matrix/memory-matrix.bas) | Memory | `1`, `2`, `3`, `4`, `Q` | Repeat a growing sequence of flashing quadrants. | [Run program](http://localhost:8134/?program=memory-matrix%2Fmemory-matrix.prg) |
-| [Robot Maze](robot-maze/robot-maze.bas) | Puzzle | `W`, `A`, `S`, `D`, `Q` | Navigate a freshly generated maze to its exit. | [Run program](http://localhost:8134/?program=robot-maze%2Frobot-maze.prg) |
-| [Music Box](music-box/music-box.bas) | Music | `A`-`K`, `1`, `2`, `3`, `Q` | Play the SID chip as a small computer keyboard. | [Run program](http://localhost:8134/?program=music-box%2Fmusic-box.prg) |
-| [Pixel Painter](pixel-painter/pixel-painter.bas) | Creative | Cursor keys, Space, `C`, `Q` | Draw character-cell pictures on the screen. | [Run program](http://localhost:8134/?program=pixel-painter%2Fpixel-painter.prg) |
-| [Stock Trader](stock-trader/stock-trader.bas) | Simulation | `B`, `S`, `W`, `Q` | Trade a volatile stock over twenty market days. | [Run program](http://localhost:8134/?program=stock-trader%2Fstock-trader.prg) |
-| [Starfield](starfield/starfield.bas) | Demo | `1`, `2`, `3`, `Q` | Watch and control a layered animated starfield. | [Run program](http://localhost:8134/?program=starfield%2Fstarfield.prg) |
+| [Meteor Dodge](meteor-dodge/meteor-dodge.bas) | Arcade | `A`, `D`, `Q` | Dodge falling meteors and build your score. | [Run program](http://localhost:8134/program/meteor-dodge) |
+| [Code Breaker](code-breaker/code-breaker.bas) | Logic | `0`-`9`, `Q` | Deduce a four-digit secret in ten guesses. | [Run program](http://localhost:8134/program/code-breaker) |
+| [Submarine Hunt](submarine-hunt/submarine-hunt.bas) | Strategy | Row, Column, `Q` | Find three hidden submarines with limited sonar shots. | [Run program](http://localhost:8134/program/submarine-hunt) |
+| [Lunar Lander](lunar-lander/lunar-lander.bas) | Simulation | `0`-`9`, `Q` | Choose engine burns and touch down gently. | [Run program](http://localhost:8134/program/lunar-lander) |
+| [Memory Matrix](memory-matrix/memory-matrix.bas) | Memory | `1`, `2`, `3`, `4`, `Q` | Repeat a growing sequence of flashing quadrants. | [Run program](http://localhost:8134/program/memory-matrix) |
+| [Robot Maze](robot-maze/robot-maze.bas) | Puzzle | `W`, `A`, `S`, `D`, `Q` | Navigate a freshly generated maze to its exit. | [Run program](http://localhost:8134/program/robot-maze) |
+| [Music Box](music-box/music-box.bas) | Music | `A`-`K`, `1`, `2`, `3`, `Q` | Play the SID chip as a small computer keyboard. | [Run program](http://localhost:8134/program/music-box) |
+| [Pixel Painter](pixel-painter/pixel-painter.bas) | Creative | Cursor keys, Space, `C`, `Q` | Draw character-cell pictures on the screen. | [Run program](http://localhost:8134/program/pixel-painter) |
+| [Stock Trader](stock-trader/stock-trader.bas) | Simulation | `B`, `S`, `W`, `Q` | Trade a volatile stock over twenty market days. | [Run program](http://localhost:8134/program/stock-trader) |
+| [Starfield](starfield/starfield.bas) | Demo | `1`, `2`, `3`, `Q` | Watch and control a layered animated starfield. | [Run program](http://localhost:8134/program/starfield) |
 
 ## Running the programs
 

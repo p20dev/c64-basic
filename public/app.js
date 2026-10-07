@@ -46,7 +46,7 @@ function renderPrograms() {
   for (const program of programs) {
     const card = document.createElement('article');
     card.className = 'program-card';
-    const programUrl = `/?program=${encodeURIComponent(program.path)}`;
+    const programUrl = `/program/${encodeURIComponent(program.slug)}`;
     card.addEventListener('click', event => {
       if (!event.target.closest('a, button')) location.href = programUrl;
     });
@@ -134,10 +134,11 @@ async function loadPrograms() {
   }
 }
 
-function startEmulator(programPath) {
+function startEmulator(program) {
+  const programPath = program.path;
   library.hidden = true;
   player.hidden = false;
-  const title = titleFromPath(programPath);
+  const title = program.title || titleFromPath(programPath);
   document.title = `${title} — C64 BASIC Collection`;
   document.querySelector('#program-title').textContent = title;
 
@@ -164,6 +165,23 @@ function startEmulator(programPath) {
   document.body.append(loader);
 }
 
+async function loadProgramPage(slug) {
+  library.hidden = true;
+  player.hidden = false;
+  try {
+    const response = await fetch('/api/programs', { cache: 'no-store' });
+    if (!response.ok) throw new Error('The program list could not be loaded.');
+    const { programs } = await response.json();
+    const program = programs.find(entry => entry.slug === slug);
+    if (!program) throw new Error('This program does not exist.');
+    startEmulator(program);
+  } catch (error) {
+    const message = document.querySelector('#emulator-error');
+    message.hidden = false;
+    message.textContent = error.message;
+  }
+}
+
 refreshButton.addEventListener('click', loadPrograms);
 searchInput.addEventListener('input', renderPrograms);
 typeFilter.addEventListener('change', renderPrograms);
@@ -186,7 +204,11 @@ function setView(view) {
 }
 
 setView(localStorage.getItem('program-view') === 'list' ? 'list' : 'grid');
-const programPath = new URLSearchParams(location.search).get('program');
-if (programPath) startEmulator(programPath);
+const legacyProgramPath = new URLSearchParams(location.search).get('program');
+const programPage = location.pathname.match(/^\/program\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/);
+if (legacyProgramPath) {
+  const slug = legacyProgramPath.split('/')[0];
+  location.replace(`/program/${encodeURIComponent(slug)}`);
+} else if (programPage) loadProgramPage(decodeURIComponent(programPage[1]));
 else loadPrograms();
 
