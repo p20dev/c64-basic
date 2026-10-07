@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Run the C64 BASIC Collection in a browser-based WASM VICE emulator.">
+  <title>C64 BASIC Collection</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">C64 BASIC Collection</a>
+    <span>VICE x64sc · WebAssembly</span>
+  </header>
+  <main>
+    <section id="library" class="panel">
+      <p class="eyebrow">Program library</p>
+      <h1>Choose a program</h1>
+      <p class="lede">Programs are read directly from the public repository each time this page loads.</p>
+      <p id="status" class="status">Loading programs…</p>
+      <div id="programs" class="program-grid" aria-live="polite"></div>
+      <button id="refresh" class="secondary" type="button">Refresh list</button>
+    </section>
+    <section id="player" class="player" hidden>
+      <div class="player-heading">
+        <div>
+          <p class="eyebrow">Now running</p>
+          <h1 id="program-title"></h1>
+        </div>
+        <a class="secondary button" href="/">Back to library</a>
+      </div>
+      <p class="hint">Click inside the emulator to enable keyboard input and sound.</p>
+      <div id="game"></div>
+      <p id="emulator-error" class="error" hidden></p>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
+

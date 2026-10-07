@@ -7,26 +7,36 @@ machine-language payload is required.
 
 ## Programs
 
-| Program | Type | Controls | Description | Play online |
+| Program | Type | Controls | Description | Run locally |
 | --- | --- | --- | --- | --- |
-| [Meteor Dodge](meteor-dodge/meteor-dodge.bas) | Arcade | `A`, `D`, `Q` | Dodge falling meteors and build your score. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#meteor-dodge) |
-| [Code Breaker](code-breaker/code-breaker.bas) | Logic | Digits, `Q` | Deduce a four-digit secret in ten guesses. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#code-breaker) |
-| [Submarine Hunt](submarine-hunt/submarine-hunt.bas) | Strategy | Coordinates, `Q` | Find three hidden submarines with limited sonar shots. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#submarine-hunt) |
-| [Lunar Lander](lunar-lander/lunar-lander.bas) | Simulation | `0`-`9`, `Q` | Choose engine burns and touch down gently. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#lunar-lander) |
-| [Memory Matrix](memory-matrix/memory-matrix.bas) | Memory | `1`-`4`, `Q` | Repeat a growing sequence of flashing quadrants. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#memory-matrix) |
-| [Robot Maze](robot-maze/robot-maze.bas) | Puzzle | `W`, `A`, `S`, `D`, `Q` | Navigate a freshly generated maze to its exit. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#robot-maze) |
-| [Music Box](music-box/music-box.bas) | Music | `A`-`K`, `1`-`3`, `Q` | Play the SID chip as a small computer keyboard. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#music-box) |
-| [Pixel Painter](pixel-painter/pixel-painter.bas) | Creative | Cursor keys, Space, `C`, `Q` | Draw character-cell pictures on the screen. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#pixel-painter) |
-| [Stock Trader](stock-trader/stock-trader.bas) | Simulation | `B`, `S`, `W`, `Q` | Trade a volatile stock over twenty market days. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#stock-trader) |
-| [Starfield](starfield/starfield.bas) | Demo | `1`-`3`, `Q` | Watch and control a layered animated starfield. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#starfield) |
+| [Meteor Dodge](meteor-dodge/meteor-dodge.bas) | Arcade | `A`, `D`, `Q` | Dodge falling meteors and build your score. | [Run program](http://localhost:8134/?program=meteor-dodge%2Fmeteor-dodge.prg) |
+| [Code Breaker](code-breaker/code-breaker.bas) | Logic | Digits, `Q` | Deduce a four-digit secret in ten guesses. | [Run program](http://localhost:8134/?program=code-breaker%2Fcode-breaker.prg) |
+| [Submarine Hunt](submarine-hunt/submarine-hunt.bas) | Strategy | Coordinates, `Q` | Find three hidden submarines with limited sonar shots. | [Run program](http://localhost:8134/?program=submarine-hunt%2Fsubmarine-hunt.prg) |
+| [Lunar Lander](lunar-lander/lunar-lander.bas) | Simulation | `0`-`9`, `Q` | Choose engine burns and touch down gently. | [Run program](http://localhost:8134/?program=lunar-lander%2Flunar-lander.prg) |
+| [Memory Matrix](memory-matrix/memory-matrix.bas) | Memory | `1`-`4`, `Q` | Repeat a growing sequence of flashing quadrants. | [Run program](http://localhost:8134/?program=memory-matrix%2Fmemory-matrix.prg) |
+| [Robot Maze](robot-maze/robot-maze.bas) | Puzzle | `W`, `A`, `S`, `D`, `Q` | Navigate a freshly generated maze to its exit. | [Run program](http://localhost:8134/?program=robot-maze%2Frobot-maze.prg) |
+| [Music Box](music-box/music-box.bas) | Music | `A`-`K`, `1`-`3`, `Q` | Play the SID chip as a small computer keyboard. | [Run program](http://localhost:8134/?program=music-box%2Fmusic-box.prg) |
+| [Pixel Painter](pixel-painter/pixel-painter.bas) | Creative | Cursor keys, Space, `C`, `Q` | Draw character-cell pictures on the screen. | [Run program](http://localhost:8134/?program=pixel-painter%2Fpixel-painter.prg) |
+| [Stock Trader](stock-trader/stock-trader.bas) | Simulation | `B`, `S`, `W`, `Q` | Trade a volatile stock over twenty market days. | [Run program](http://localhost:8134/?program=stock-trader%2Fstock-trader.prg) |
+| [Starfield](starfield/starfield.bas) | Demo | `1`-`3`, `Q` | Watch and control a layered animated starfield. | [Run program](http://localhost:8134/?program=starfield%2Fstarfield.prg) |
 
 ## Running the programs
 
-Click a **Run program** link in the table to launch that program directly in a
-browser-based VICE x64sc emulator powered by WebAssembly. The runner downloads
-the emulator from the EmulatorJS CDN; the program itself is embedded in the
-repository's runner, so no file picker or manual loading is required. Click the
-emulator once to give it keyboard focus and enable audio.
+Start the local browser app with Docker Compose:
+
+```text
+docker compose up --build -d
+```
+
+Open [http://localhost:8134](http://localhost:8134), or click a **Run program**
+link in the table. The app runs the VICE x64sc core through WebAssembly and
+downloads the selected PRG through its own backend, avoiding browser CORS
+restrictions. Click inside the emulator to enable keyboard input and sound.
+
+The app reads the public repository tree at runtime. New `.prg` files pushed to
+the configured branch appear after clicking **Refresh list**; rebuilding the
+Docker image is not required. Repository, branch, and host port settings live in
+`.env`, where the default host port is `8134`.
 
 Each directory contains an editable, line-numbered `.bas` listing and a matching
 tokenized `.prg` file. The PRGs use the normal C64 BASIC load address, `$0801`.

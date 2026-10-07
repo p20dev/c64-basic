@@ -1,0 +1,10 @@
+services:
+  c64-basic:
+    build: .
+    ports:
+      - "${HOST_PORT:-8134}:8080"
+    environment:
+      PROGRAM_REPOSITORY: "${PROGRAM_REPOSITORY:-https://git.p20.dev/christian/c64-basic}"
+      PROGRAM_BRANCH: "${PROGRAM_BRANCH:-main}"
+    restart: unless-stopped
+

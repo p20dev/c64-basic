@@ -1,0 +1,32 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: #121024;
+  color: #f7f3ff;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top, #33265d, #121024 42rem); }
+.site-header { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 5vw, 4rem); border-bottom: 1px solid #ffffff1c; color: #bdb5dd; }
+.brand { color: #fff; font-weight: 800; text-decoration: none; }
+main { width: min(1100px, calc(100% - 2rem)); margin: 0 auto; padding: clamp(2rem, 6vw, 5rem) 0; }
+.panel { max-width: 900px; margin: auto; }
+.eyebrow { margin: 0 0 .5rem; color: #c9a7ff; font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(2rem, 7vw, 4rem); line-height: 1; }
+.lede, .hint { color: #c8c1df; }
+.status { margin: 2rem 0 1rem; color: #9ce6c2; }
+.program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+.program-card { display: flex; min-height: 125px; flex-direction: column; justify-content: space-between; padding: 1.25rem; border: 1px solid #ffffff24; border-radius: 14px; background: #211c3bcc; color: #fff; text-decoration: none; transition: transform .15s, border-color .15s; }
+.program-card:hover { transform: translateY(-3px); border-color: #b58cff; }
+.program-card span { color: #bca8f1; font-size: .9rem; }
+.button, button { display: inline-block; margin-top: 1.5rem; padding: .7rem 1rem; border: 1px solid #ffffff2b; border-radius: 8px; background: #302653; color: #fff; font: inherit; text-decoration: none; cursor: pointer; }
+button:disabled { opacity: .5; cursor: wait; }
+.player-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+.player-heading h1 { font-size: clamp(1.8rem, 5vw, 3rem); }
+#game { width: min(100%, 960px); height: min(75vw, 720px); min-height: 480px; margin: 1.5rem auto 0; background: #000; }
+.error { color: #ffb4ab; }
+@media (max-width: 600px) {
+  .site-header span { display: none; }
+  .player-heading { align-items: start; flex-direction: column; }
+  #game { min-height: 60vh; }
+}
