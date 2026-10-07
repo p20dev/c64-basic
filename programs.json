@@ -68,6 +68,76 @@
     "description": "Watch and control a layered animated starfield.",
     "controls": ["1", "2", "3", "Q"],
     "path": "starfield/starfield.prg"
+  },
+  {
+    "title": "Snake Trail",
+    "type": "Arcade",
+    "description": "Guide a growing snake through a field of food and danger.",
+    "controls": ["W", "A", "S", "D", "Q"],
+    "path": "snake-trail/snake-trail.prg"
+  },
+  {
+    "title": "Dice Poker",
+    "type": "Dice",
+    "description": "Keep your best dice and chase a winning poker combination.",
+    "controls": ["1-5", "RETURN", "Q"],
+    "path": "dice-poker/dice-poker.prg"
+  },
+  {
+    "title": "Word Scramble",
+    "type": "Word",
+    "description": "Unscramble five computer-themed words from helpful clues.",
+    "controls": ["A-Z", "RETURN", "Q"],
+    "path": "word-scramble/word-scramble.prg"
+  },
+  {
+    "title": "Nim Challenge",
+    "type": "Strategy",
+    "description": "Outthink the computer in the classic game of twenty-one sticks.",
+    "controls": ["1", "2", "3", "0"],
+    "path": "nim-challenge/nim-challenge.prg"
+  },
+  {
+    "title": "Reaction Timer",
+    "type": "Reflex",
+    "description": "Test your reactions across five unpredictable timed rounds.",
+    "controls": ["ANY KEY", "Q"],
+    "path": "reaction-timer/reaction-timer.prg"
+  },
+  {
+    "title": "Morse Trainer",
+    "type": "Educational",
+    "description": "Learn Morse letters by reading and hearing their signals.",
+    "controls": ["A-Z", "RETURN", "Q"],
+    "path": "morse-trainer/morse-trainer.prg"
+  },
+  {
+    "title": "Kaleidoscope",
+    "type": "Demo",
+    "description": "Grow colorful symmetrical patterns across the character screen.",
+    "controls": ["SPACE", "C", "Q"],
+    "path": "kaleidoscope/kaleidoscope.prg"
+  },
+  {
+    "title": "World Quiz",
+    "type": "Trivia",
+    "description": "Take a seven-stop tour of world geography and landmarks.",
+    "controls": ["1", "2", "3", "Q"],
+    "path": "world-quiz/world-quiz.prg"
+  },
+  {
+    "title": "Life Lab",
+    "type": "Simulation",
+    "description": "Observe generations of Conway's cellular automaton evolve.",
+    "controls": ["SPACE", "R", "Q"],
+    "path": "life-lab/life-lab.prg"
+  },
+  {
+    "title": "Cipher Wheel",
+    "type": "Utility",
+    "description": "Encode and decode secret messages with a Caesar shift.",
+    "controls": ["E", "D", "N", "Q"],
+    "path": "cipher-wheel/cipher-wheel.prg"
   }
 ]
 

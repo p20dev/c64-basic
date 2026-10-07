@@ -28,7 +28,13 @@ const typeIcons = {
   Puzzle: '⌘',
   Music: '♪',
   Creative: '✎',
-  Demo: '✦'
+  Demo: '✦',
+  Dice: '⚄',
+  Word: 'Aa',
+  Reflex: '⚡',
+  Educational: '⌁',
+  Trivia: '?',
+  Utility: '⚒'
 };
 
 function renderPrograms() {

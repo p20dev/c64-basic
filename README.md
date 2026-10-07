@@ -1,6 +1,6 @@
 # C64 BASIC Collection
 
-Ten small, polished programs for the Commodore 64, written entirely in stock
+Twenty small, polished programs for the Commodore 64, written entirely in stock
 Commodore BASIC V2. The collection mixes arcade action, puzzles, simulations,
 creative tools, sound, and visual effects. No cartridge, BASIC extension, or
 machine-language payload is required.
@@ -19,6 +19,16 @@ machine-language payload is required.
 | [Pixel Painter](pixel-painter/pixel-painter.bas) | Creative | Cursor keys, Space, `C`, `Q` | Draw character-cell pictures on the screen. | [Run program](http://localhost:8134/program/pixel-painter) |
 | [Stock Trader](stock-trader/stock-trader.bas) | Simulation | `B`, `S`, `W`, `Q` | Trade a volatile stock over twenty market days. | [Run program](http://localhost:8134/program/stock-trader) |
 | [Starfield](starfield/starfield.bas) | Demo | `1`, `2`, `3`, `Q` | Watch and control a layered animated starfield. | [Run program](http://localhost:8134/program/starfield) |
+| [Snake Trail](snake-trail/snake-trail.bas) | Arcade | `W`, `A`, `S`, `D`, `Q` | Guide a growing snake through a field of food and danger. | [Run program](http://localhost:8134/program/snake-trail) |
+| [Dice Poker](dice-poker/dice-poker.bas) | Dice | `1`-`5`, Return, `Q` | Keep your best dice and chase a winning poker combination. | [Run program](http://localhost:8134/program/dice-poker) |
+| [Word Scramble](word-scramble/word-scramble.bas) | Word | `A`-`Z`, Return, `Q` | Unscramble five computer-themed words from helpful clues. | [Run program](http://localhost:8134/program/word-scramble) |
+| [Nim Challenge](nim-challenge/nim-challenge.bas) | Strategy | `1`, `2`, `3`, `0` | Outthink the computer in the classic game of twenty-one sticks. | [Run program](http://localhost:8134/program/nim-challenge) |
+| [Reaction Timer](reaction-timer/reaction-timer.bas) | Reflex | Any key, `Q` | Test your reactions across five unpredictable timed rounds. | [Run program](http://localhost:8134/program/reaction-timer) |
+| [Morse Trainer](morse-trainer/morse-trainer.bas) | Educational | `A`-`Z`, Return, `Q` | Learn Morse letters by reading and hearing their signals. | [Run program](http://localhost:8134/program/morse-trainer) |
+| [Kaleidoscope](kaleidoscope/kaleidoscope.bas) | Demo | Space, `C`, `Q` | Grow colorful symmetrical patterns across the character screen. | [Run program](http://localhost:8134/program/kaleidoscope) |
+| [World Quiz](world-quiz/world-quiz.bas) | Trivia | `1`, `2`, `3`, `Q` | Take a seven-stop tour of world geography and landmarks. | [Run program](http://localhost:8134/program/world-quiz) |
+| [Life Lab](life-lab/life-lab.bas) | Simulation | Space, `R`, `Q` | Observe generations of Conway's cellular automaton evolve. | [Run program](http://localhost:8134/program/life-lab) |
+| [Cipher Wheel](cipher-wheel/cipher-wheel.bas) | Utility | `E`, `D`, `N`, `Q` | Encode and decode secret messages with a Caesar shift. | [Run program](http://localhost:8134/program/cipher-wheel) |
 
 ## Running the programs
 
