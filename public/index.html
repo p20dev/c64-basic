@@ -15,11 +15,32 @@
   <main>
     <section id="library" class="panel">
       <p class="eyebrow">Program library</p>
-      <h1>Choose a program</h1>
-      <p class="lede">Programs are read directly from the locally mounted repository each time this page loads.</p>
+      <h1>Small programs. Pure 8-bit fun.</h1>
+      <p class="lede">Explore a growing collection of games, puzzles, creative tools, and audiovisual experiments written in Commodore 64 BASIC. Pick something that catches your eye, run it instantly, or open the source to see how every line works.</p>
+      <div class="library-toolbar" aria-label="Program library controls">
+        <label class="search-field">
+          <span class="sr-only">Search programs</span>
+          <input id="search" type="search" placeholder="Search programs…" autocomplete="off">
+        </label>
+        <label>
+          <span class="sr-only">Filter by type</span>
+          <select id="type-filter"><option value="">All types</option></select>
+        </label>
+        <label>
+          <span class="sr-only">Sort programs</span>
+          <select id="sort-order">
+            <option value="title">Sort: Title</option>
+            <option value="type">Sort: Type</option>
+          </select>
+        </label>
+        <div class="view-switcher" role="group" aria-label="View style">
+          <button id="grid-view" class="view-button active" type="button" aria-pressed="true" title="Grid view">▦</button>
+          <button id="list-view" class="view-button" type="button" aria-pressed="false" title="List view">☷</button>
+        </div>
+        <button id="refresh" class="toolbar-button" type="button">Refresh</button>
+      </div>
       <p id="status" class="status">Loading programs…</p>
       <div id="programs" class="program-grid" aria-live="polite"></div>
-      <button id="refresh" class="secondary" type="button">Refresh list</button>
     </section>
     <section id="player" class="player" hidden>
       <div class="player-heading">
@@ -34,6 +55,17 @@
       <p id="emulator-error" class="error" hidden></p>
     </section>
   </main>
+  <dialog id="source-modal" class="source-modal">
+    <div class="modal-heading">
+      <div>
+        <p class="eyebrow">BASIC V2 source</p>
+        <h2 id="source-title">Program source</h2>
+      </div>
+      <button id="close-source" class="icon-button" type="button" aria-label="Close source">×</button>
+    </div>
+    <p id="source-status" class="status">Loading source…</p>
+    <pre id="source-code" hidden><code></code></pre>
+  </dialog>
   <script src="/app.js"></script>
 </body>
 </html>

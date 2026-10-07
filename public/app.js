@@ -3,6 +3,16 @@ const player = document.querySelector('#player');
 const status = document.querySelector('#status');
 const programsElement = document.querySelector('#programs');
 const refreshButton = document.querySelector('#refresh');
+const searchInput = document.querySelector('#search');
+const typeFilter = document.querySelector('#type-filter');
+const sortOrder = document.querySelector('#sort-order');
+const gridViewButton = document.querySelector('#grid-view');
+const listViewButton = document.querySelector('#list-view');
+const sourceModal = document.querySelector('#source-modal');
+const sourceTitle = document.querySelector('#source-title');
+const sourceStatus = document.querySelector('#source-status');
+const sourceCode = document.querySelector('#source-code');
+let allPrograms = [];
 
 function titleFromPath(path) {
   const filename = path.split('/').at(-1).replace(/\.prg$/i, '');
@@ -21,49 +31,97 @@ const typeIcons = {
   Demo: '✦'
 };
 
+function renderPrograms() {
+  const query = searchInput.value.trim().toLowerCase();
+  const selectedType = typeFilter.value;
+  const programs = allPrograms
+    .filter(program => !selectedType || program.type === selectedType)
+    .filter(program => !query || `${program.title} ${program.description} ${program.type} ${program.controls.join(' ')}`.toLowerCase().includes(query))
+    .sort((left, right) => {
+      if (sortOrder.value === 'type') return left.type.localeCompare(right.type) || left.title.localeCompare(right.title);
+      return left.title.localeCompare(right.title);
+    });
+
+  programsElement.replaceChildren();
+  for (const program of programs) {
+    const card = document.createElement('article');
+    card.className = 'program-card';
+
+    const pill = document.createElement('span');
+    pill.className = 'type-pill';
+    pill.textContent = `${typeIcons[program.type] || '●'} ${program.type}`;
+
+    const title = document.createElement('h2');
+    title.className = 'program-title';
+    title.textContent = program.title;
+
+    const description = document.createElement('p');
+    description.className = 'program-description';
+    description.textContent = program.description;
+
+    const controls = document.createElement('div');
+    controls.className = 'controls';
+    controls.setAttribute('aria-label', `Controls: ${program.controls.join(', ')}`);
+    for (const control of program.controls) {
+      const key = document.createElement('kbd');
+      key.textContent = control;
+      controls.append(key);
+    }
+
+    const actions = document.createElement('div');
+    actions.className = 'program-actions';
+    const run = document.createElement('a');
+    run.className = 'program-action primary-action';
+    run.href = `/?program=${encodeURIComponent(program.path)}`;
+    run.textContent = 'Run program →';
+    const source = document.createElement('button');
+    source.className = 'source-action';
+    source.type = 'button';
+    source.textContent = 'Show source';
+    source.disabled = !program.source;
+    source.addEventListener('click', () => showSource(program));
+    actions.append(run, source);
+    card.append(pill, title, description, controls, actions);
+    programsElement.append(card);
+  }
+  status.textContent = `${programs.length} of ${allPrograms.length} programs shown`;
+}
+
+async function showSource(program) {
+  sourceTitle.textContent = program.title;
+  sourceStatus.hidden = false;
+  sourceStatus.className = 'status';
+  sourceStatus.textContent = 'Loading source…';
+  sourceCode.hidden = true;
+  sourceCode.querySelector('code').textContent = '';
+  sourceModal.showModal();
+  try {
+    const response = await fetch(`/api/source?path=${encodeURIComponent(program.path)}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error('The program source could not be loaded.');
+    sourceCode.querySelector('code').textContent = await response.text();
+    sourceStatus.hidden = true;
+    sourceCode.hidden = false;
+  } catch (error) {
+    sourceStatus.className = 'status error';
+    sourceStatus.textContent = error.message;
+  }
+}
+
 async function loadPrograms() {
   status.hidden = false;
   status.className = 'status';
   status.textContent = 'Loading programs…';
-  programsElement.replaceChildren();
   refreshButton.disabled = true;
   try {
     const response = await fetch('/api/programs', { cache: 'no-store' });
     if (!response.ok) throw new Error('The program list could not be loaded.');
     const { programs } = await response.json();
-    for (const program of programs) {
-      const link = document.createElement('a');
-      link.className = 'program-card';
-      link.href = `/?program=${encodeURIComponent(program.path)}`;
-
-      const pill = document.createElement('span');
-      pill.className = 'type-pill';
-      pill.textContent = `${typeIcons[program.type] || '●'} ${program.type}`;
-
-      const title = document.createElement('strong');
-      title.className = 'program-title';
-      title.textContent = program.title;
-
-      const description = document.createElement('span');
-      description.className = 'program-description';
-      description.textContent = program.description;
-
-      const controls = document.createElement('span');
-      controls.className = 'controls';
-      controls.setAttribute('aria-label', `Controls: ${program.controls.join(', ')}`);
-      for (const control of program.controls) {
-        const key = document.createElement('kbd');
-        key.textContent = control;
-        controls.append(key);
-      }
-
-      const action = document.createElement('span');
-      action.className = 'program-action';
-      action.textContent = 'Run program →';
-      link.append(pill, title, description, controls, action);
-      programsElement.append(link);
-    }
-    status.textContent = programs.length ? `${programs.length} programs available` : 'No PRG files found.';
+    allPrograms = programs;
+    const currentType = typeFilter.value;
+    const types = [...new Set(programs.map(program => program.type))].sort();
+    typeFilter.replaceChildren(new Option('All types', ''), ...types.map(type => new Option(type, type)));
+    if (types.includes(currentType)) typeFilter.value = currentType;
+    renderPrograms();
   } catch (error) {
     status.className = 'status error';
     status.textContent = error.message;
@@ -103,6 +161,27 @@ function startEmulator(programPath) {
 }
 
 refreshButton.addEventListener('click', loadPrograms);
+searchInput.addEventListener('input', renderPrograms);
+typeFilter.addEventListener('change', renderPrograms);
+sortOrder.addEventListener('change', renderPrograms);
+gridViewButton.addEventListener('click', () => setView('grid'));
+listViewButton.addEventListener('click', () => setView('list'));
+document.querySelector('#close-source').addEventListener('click', () => sourceModal.close());
+sourceModal.addEventListener('click', event => {
+  if (event.target === sourceModal) sourceModal.close();
+});
+
+function setView(view) {
+  const list = view === 'list';
+  programsElement.classList.toggle('list-view', list);
+  gridViewButton.classList.toggle('active', !list);
+  listViewButton.classList.toggle('active', list);
+  gridViewButton.setAttribute('aria-pressed', String(!list));
+  listViewButton.setAttribute('aria-pressed', String(list));
+  localStorage.setItem('program-view', view);
+}
+
+setView(localStorage.getItem('program-view') === 'list' ? 'list' : 'grid');
 const programPath = new URLSearchParams(location.search).get('program');
 if (programPath) startEmulator(programPath);
 else loadPrograms();

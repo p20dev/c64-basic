@@ -27,7 +27,13 @@ function fetchPrograms() {
     if (!filePath.startsWith(programDirectory + sep) || !existsSync(filePath) || !statSync(filePath).isFile()) {
       throw new Error(`Program file is missing: ${program.path}`);
     }
-    return { ...program, size: statSync(filePath).size };
+    const sourcePath = program.source || program.path.replace(/\.prg$/i, '.bas');
+    const sourceFilePath = resolve(programDirectory, sourcePath);
+    return {
+      ...program,
+      source: sourceFilePath.startsWith(programDirectory + sep) && existsSync(sourceFilePath) ? sourcePath : null,
+      size: statSync(filePath).size
+    };
   });
 }
 
@@ -43,6 +49,21 @@ function sendProgram(response, programPath) {
     'Content-Type': 'application/octet-stream',
     'Content-Length': statSync(filePath).size,
     'Content-Disposition': `inline; filename="${programPath.split('/').at(-1)}"`,
+    'Cache-Control': 'no-store'
+  });
+  createReadStream(filePath).pipe(response);
+}
+
+function sendSource(response, programPath) {
+  const program = fetchPrograms().find(entry => entry.path === programPath);
+  if (!program?.source) {
+    sendJson(response, 404, { error: 'Program source not found' });
+    return;
+  }
+  const filePath = resolve(programDirectory, program.source);
+  response.writeHead(200, {
+    'Content-Type': 'text/plain; charset=utf-8',
+    'Content-Length': statSync(filePath).size,
     'Cache-Control': 'no-store'
   });
   createReadStream(filePath).pipe(response);
@@ -73,6 +94,8 @@ createServer(async (request, response) => {
       sendJson(response, 200, { programs: fetchPrograms() });
     } else if (url.pathname === '/api/program') {
       sendProgram(response, url.searchParams.get('path') || '');
+    } else if (url.pathname === '/api/source') {
+      sendSource(response, url.searchParams.get('path') || '');
     } else if (!serveStatic(response, url.pathname)) {
       sendJson(response, 404, { error: 'Not found' });
     }
