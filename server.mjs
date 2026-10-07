@@ -1,20 +1,12 @@
-import { createReadStream, existsSync, statSync } from 'node:fs';
+import { createReadStream, existsSync, readFileSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
-import { extname, join, normalize } from 'node:path';
+import { extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const port = Number(process.env.PORT || 8080);
-const repository = (process.env.PROGRAM_REPOSITORY || 'https://git.p20.dev/christian/c64-basic').replace(/\/$/, '');
-const branch = process.env.PROGRAM_BRANCH || 'main';
+const programDirectory = resolve(process.env.PROGRAM_DIRECTORY || fileURLToPath(new URL('./', import.meta.url)));
+const manifestPath = join(programDirectory, 'programs.json');
 const publicDirectory = fileURLToPath(new URL('./public/', import.meta.url));
-const repositoryMatch = repository.match(/^https:\/\/([^/]+)\/([^/]+)\/([^/]+)$/);
-
-if (!repositoryMatch) {
-  throw new Error('PROGRAM_REPOSITORY must look like https://host/owner/repository');
-}
-
-const [, repositoryHost, repositoryOwner, repositoryName] = repositoryMatch;
-const apiBase = `https://${repositoryHost}/api/v1/repos/${encodeURIComponent(repositoryOwner)}/${encodeURIComponent(repositoryName)}`;
 
 function sendJson(response, status, value) {
   const body = JSON.stringify(value);
@@ -26,36 +18,34 @@ function sendJson(response, status, value) {
   response.end(body);
 }
 
-async function fetchPrograms() {
-  const treeUrl = `${apiBase}/git/trees/${encodeURIComponent(branch)}?recursive=true`;
-  const upstream = await fetch(treeUrl, { signal: AbortSignal.timeout(10000) });
-  if (!upstream.ok) throw new Error(`Repository returned HTTP ${upstream.status}`);
-  const tree = await upstream.json();
-  return tree.tree
-    .filter(entry => entry.type === 'blob' && entry.path.toLowerCase().endsWith('.prg'))
-    .map(entry => ({ path: entry.path, size: entry.size }))
-    .sort((left, right) => left.path.localeCompare(right.path));
+function fetchPrograms() {
+  const programs = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  if (!Array.isArray(programs)) throw new Error('programs.json must contain an array');
+  return programs.map(program => {
+    if (!program.path?.toLowerCase().endsWith('.prg')) throw new Error('Every program must reference a PRG file');
+    const filePath = resolve(programDirectory, program.path);
+    if (!filePath.startsWith(programDirectory + sep) || !existsSync(filePath) || !statSync(filePath).isFile()) {
+      throw new Error(`Program file is missing: ${program.path}`);
+    }
+    return { ...program, size: statSync(filePath).size };
+  });
 }
 
-async function proxyProgram(response, programPath) {
-  const programs = await fetchPrograms();
+function sendProgram(response, programPath) {
+  const programs = fetchPrograms();
   if (!programs.some(program => program.path === programPath)) {
     sendJson(response, 404, { error: 'Program not found' });
     return;
   }
 
-  const encodedPath = programPath.split('/').map(encodeURIComponent).join('/');
-  const rawUrl = `${repository}/raw/branch/${encodeURIComponent(branch)}/${encodedPath}`;
-  const upstream = await fetch(rawUrl, { signal: AbortSignal.timeout(10000) });
-  if (!upstream.ok) throw new Error(`Program download returned HTTP ${upstream.status}`);
-  const bytes = Buffer.from(await upstream.arrayBuffer());
+  const filePath = resolve(programDirectory, programPath);
   response.writeHead(200, {
     'Content-Type': 'application/octet-stream',
-    'Content-Length': bytes.length,
+    'Content-Length': statSync(filePath).size,
     'Content-Disposition': `inline; filename="${programPath.split('/').at(-1)}"`,
     'Cache-Control': 'no-store'
   });
-  response.end(bytes);
+  createReadStream(filePath).pipe(response);
 }
 
 function serveStatic(response, pathname) {
@@ -80,15 +70,15 @@ createServer(async (request, response) => {
     if (request.method !== 'GET') {
       sendJson(response, 405, { error: 'Method not allowed' });
     } else if (url.pathname === '/api/programs') {
-      sendJson(response, 200, { repository, branch, programs: await fetchPrograms() });
+      sendJson(response, 200, { programs: fetchPrograms() });
     } else if (url.pathname === '/api/program') {
-      await proxyProgram(response, url.searchParams.get('path') || '');
+      sendProgram(response, url.searchParams.get('path') || '');
     } else if (!serveStatic(response, url.pathname)) {
       sendJson(response, 404, { error: 'Not found' });
     }
   } catch (error) {
     console.error(error);
-    if (!response.headersSent) sendJson(response, 502, { error: 'Unable to reach the program repository' });
+    if (!response.headersSent) sendJson(response, 500, { error: 'Unable to read the program library' });
     else response.end();
   }
 }).listen(port, '0.0.0.0', () => {

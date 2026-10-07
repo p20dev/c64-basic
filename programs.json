@@ -1,0 +1,73 @@
+[
+  {
+    "title": "Meteor Dodge",
+    "type": "Arcade",
+    "description": "Dodge falling meteors and build your score.",
+    "controls": ["A", "D", "Q"],
+    "path": "meteor-dodge/meteor-dodge.prg"
+  },
+  {
+    "title": "Code Breaker",
+    "type": "Logic",
+    "description": "Deduce a four-digit secret in ten guesses.",
+    "controls": ["0-9", "Q"],
+    "path": "code-breaker/code-breaker.prg"
+  },
+  {
+    "title": "Submarine Hunt",
+    "type": "Strategy",
+    "description": "Find three hidden submarines with limited sonar shots.",
+    "controls": ["ROW", "COLUMN", "Q"],
+    "path": "submarine-hunt/submarine-hunt.prg"
+  },
+  {
+    "title": "Lunar Lander",
+    "type": "Simulation",
+    "description": "Choose engine burns and touch down gently.",
+    "controls": ["0-9", "Q"],
+    "path": "lunar-lander/lunar-lander.prg"
+  },
+  {
+    "title": "Memory Matrix",
+    "type": "Memory",
+    "description": "Repeat a growing sequence of flashing quadrants.",
+    "controls": ["1", "2", "3", "4", "Q"],
+    "path": "memory-matrix/memory-matrix.prg"
+  },
+  {
+    "title": "Robot Maze",
+    "type": "Puzzle",
+    "description": "Navigate a freshly generated maze to its exit.",
+    "controls": ["W", "A", "S", "D", "Q"],
+    "path": "robot-maze/robot-maze.prg"
+  },
+  {
+    "title": "Music Box",
+    "type": "Music",
+    "description": "Play the SID chip as a small computer keyboard.",
+    "controls": ["A-K", "1", "2", "3", "Q"],
+    "path": "music-box/music-box.prg"
+  },
+  {
+    "title": "Pixel Painter",
+    "type": "Creative",
+    "description": "Draw character-cell pictures on the screen.",
+    "controls": ["CURSOR KEYS", "SPACE", "C", "Q"],
+    "path": "pixel-painter/pixel-painter.prg"
+  },
+  {
+    "title": "Stock Trader",
+    "type": "Simulation",
+    "description": "Trade a volatile stock over twenty market days.",
+    "controls": ["B", "S", "W", "Q"],
+    "path": "stock-trader/stock-trader.prg"
+  },
+  {
+    "title": "Starfield",
+    "type": "Demo",
+    "description": "Watch and control a layered animated starfield.",
+    "controls": ["1", "2", "3", "Q"],
+    "path": "starfield/starfield.prg"
+  }
+]
+

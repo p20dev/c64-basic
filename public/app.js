@@ -9,6 +9,18 @@ function titleFromPath(path) {
   return filename.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
+const typeIcons = {
+  Arcade: '🎮',
+  Logic: '◆',
+  Strategy: '♟',
+  Simulation: '⚙',
+  Memory: '◫',
+  Puzzle: '⌘',
+  Music: '♪',
+  Creative: '✎',
+  Demo: '✦'
+};
+
 async function loadPrograms() {
   status.hidden = false;
   status.className = 'status';
@@ -23,11 +35,32 @@ async function loadPrograms() {
       const link = document.createElement('a');
       link.className = 'program-card';
       link.href = `/?program=${encodeURIComponent(program.path)}`;
+
+      const pill = document.createElement('span');
+      pill.className = 'type-pill';
+      pill.textContent = `${typeIcons[program.type] || '●'} ${program.type}`;
+
       const title = document.createElement('strong');
-      title.textContent = titleFromPath(program.path);
+      title.className = 'program-title';
+      title.textContent = program.title;
+
+      const description = document.createElement('span');
+      description.className = 'program-description';
+      description.textContent = program.description;
+
+      const controls = document.createElement('span');
+      controls.className = 'controls';
+      controls.setAttribute('aria-label', `Controls: ${program.controls.join(', ')}`);
+      for (const control of program.controls) {
+        const key = document.createElement('kbd');
+        key.textContent = control;
+        controls.append(key);
+      }
+
       const action = document.createElement('span');
+      action.className = 'program-action';
       action.textContent = 'Run program →';
-      link.append(title, action);
+      link.append(pill, title, description, controls, action);
       programsElement.append(link);
     }
     status.textContent = programs.length ? `${programs.length} programs available` : 'No PRG files found.';

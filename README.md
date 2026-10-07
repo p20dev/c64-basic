@@ -10,15 +10,15 @@ machine-language payload is required.
 | Program | Type | Controls | Description | Run locally |
 | --- | --- | --- | --- | --- |
 | [Meteor Dodge](meteor-dodge/meteor-dodge.bas) | Arcade | `A`, `D`, `Q` | Dodge falling meteors and build your score. | [Run program](http://localhost:8134/?program=meteor-dodge%2Fmeteor-dodge.prg) |
-| [Code Breaker](code-breaker/code-breaker.bas) | Logic | Digits, `Q` | Deduce a four-digit secret in ten guesses. | [Run program](http://localhost:8134/?program=code-breaker%2Fcode-breaker.prg) |
-| [Submarine Hunt](submarine-hunt/submarine-hunt.bas) | Strategy | Coordinates, `Q` | Find three hidden submarines with limited sonar shots. | [Run program](http://localhost:8134/?program=submarine-hunt%2Fsubmarine-hunt.prg) |
+| [Code Breaker](code-breaker/code-breaker.bas) | Logic | `0`-`9`, `Q` | Deduce a four-digit secret in ten guesses. | [Run program](http://localhost:8134/?program=code-breaker%2Fcode-breaker.prg) |
+| [Submarine Hunt](submarine-hunt/submarine-hunt.bas) | Strategy | Row, Column, `Q` | Find three hidden submarines with limited sonar shots. | [Run program](http://localhost:8134/?program=submarine-hunt%2Fsubmarine-hunt.prg) |
 | [Lunar Lander](lunar-lander/lunar-lander.bas) | Simulation | `0`-`9`, `Q` | Choose engine burns and touch down gently. | [Run program](http://localhost:8134/?program=lunar-lander%2Flunar-lander.prg) |
-| [Memory Matrix](memory-matrix/memory-matrix.bas) | Memory | `1`-`4`, `Q` | Repeat a growing sequence of flashing quadrants. | [Run program](http://localhost:8134/?program=memory-matrix%2Fmemory-matrix.prg) |
+| [Memory Matrix](memory-matrix/memory-matrix.bas) | Memory | `1`, `2`, `3`, `4`, `Q` | Repeat a growing sequence of flashing quadrants. | [Run program](http://localhost:8134/?program=memory-matrix%2Fmemory-matrix.prg) |
 | [Robot Maze](robot-maze/robot-maze.bas) | Puzzle | `W`, `A`, `S`, `D`, `Q` | Navigate a freshly generated maze to its exit. | [Run program](http://localhost:8134/?program=robot-maze%2Frobot-maze.prg) |
-| [Music Box](music-box/music-box.bas) | Music | `A`-`K`, `1`-`3`, `Q` | Play the SID chip as a small computer keyboard. | [Run program](http://localhost:8134/?program=music-box%2Fmusic-box.prg) |
+| [Music Box](music-box/music-box.bas) | Music | `A`-`K`, `1`, `2`, `3`, `Q` | Play the SID chip as a small computer keyboard. | [Run program](http://localhost:8134/?program=music-box%2Fmusic-box.prg) |
 | [Pixel Painter](pixel-painter/pixel-painter.bas) | Creative | Cursor keys, Space, `C`, `Q` | Draw character-cell pictures on the screen. | [Run program](http://localhost:8134/?program=pixel-painter%2Fpixel-painter.prg) |
 | [Stock Trader](stock-trader/stock-trader.bas) | Simulation | `B`, `S`, `W`, `Q` | Trade a volatile stock over twenty market days. | [Run program](http://localhost:8134/?program=stock-trader%2Fstock-trader.prg) |
-| [Starfield](starfield/starfield.bas) | Demo | `1`-`3`, `Q` | Watch and control a layered animated starfield. | [Run program](http://localhost:8134/?program=starfield%2Fstarfield.prg) |
+| [Starfield](starfield/starfield.bas) | Demo | `1`, `2`, `3`, `Q` | Watch and control a layered animated starfield. | [Run program](http://localhost:8134/?program=starfield%2Fstarfield.prg) |
 
 ## Running the programs
 
@@ -35,10 +35,12 @@ restrictions. Click inside the emulator to enable keyboard input and sound.
 Direct keyboard input is enabled by default, mouse locking is disabled, and
 moving the pointer anywhere over the emulator reveals its control bar.
 
-The app reads the public repository tree at runtime. New `.prg` files pushed to
-the configured branch appear after clicking **Refresh list**; rebuilding the
-Docker image is not required. Repository, branch, and host port settings live in
-`.env`, where the default host port is `8134`.
+Docker Compose mounts this repository read-only at `/programs`, and the app
+serves PRG files from that local mount. There is no runtime dependency on the
+Git server and no browser CORS boundary. Add a program to `programs.json` and
+place its PRG in the referenced path; it appears after clicking **Refresh list**
+without rebuilding the image. The default host port is configured as `8134` in
+`.env`.
 
 Each directory contains an editable, line-numbered `.bas` listing and a matching
 tokenized `.prg` file. The PRGs use the normal C64 BASIC load address, `$0801`.
