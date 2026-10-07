@@ -8,14 +8,14 @@ const programDirectory = resolve(process.env.PROGRAM_DIRECTORY || fileURLToPath(
 const manifestPath = join(programDirectory, 'programs.json');
 const publicDirectory = fileURLToPath(new URL('./public/', import.meta.url));
 
-function sendJson(response, status, value) {
+function sendJson(response, status, value, headOnly = false) {
   const body = JSON.stringify(value);
   response.writeHead(status, {
     'Content-Type': 'application/json; charset=utf-8',
     'Content-Length': Buffer.byteLength(body),
     'Cache-Control': 'no-store'
   });
-  response.end(body);
+  response.end(headOnly ? undefined : body);
 }
 
 function fetchPrograms() {
@@ -37,7 +37,7 @@ function fetchPrograms() {
   });
 }
 
-function sendProgram(response, programPath) {
+function sendProgram(response, programPath, headOnly = false) {
   const programs = fetchPrograms();
   if (!programs.some(program => program.path === programPath)) {
     sendJson(response, 404, { error: 'Program not found' });
@@ -51,10 +51,11 @@ function sendProgram(response, programPath) {
     'Content-Disposition': `inline; filename="${programPath.split('/').at(-1)}"`,
     'Cache-Control': 'no-store'
   });
-  createReadStream(filePath).pipe(response);
+  if (headOnly) response.end();
+  else createReadStream(filePath).pipe(response);
 }
 
-function sendSource(response, programPath) {
+function sendSource(response, programPath, headOnly = false) {
   const program = fetchPrograms().find(entry => entry.path === programPath);
   if (!program?.source) {
     sendJson(response, 404, { error: 'Program source not found' });
@@ -66,10 +67,11 @@ function sendSource(response, programPath) {
     'Content-Length': statSync(filePath).size,
     'Cache-Control': 'no-store'
   });
-  createReadStream(filePath).pipe(response);
+  if (headOnly) response.end();
+  else createReadStream(filePath).pipe(response);
 }
 
-function serveStatic(response, pathname) {
+function serveStatic(response, pathname, headOnly = false) {
   const requested = pathname === '/' ? 'index.html' : pathname.slice(1);
   const filePath = normalize(join(publicDirectory, requested));
   if (!filePath.startsWith(publicDirectory) || !existsSync(filePath) || !statSync(filePath).isFile()) {
@@ -81,23 +83,26 @@ function serveStatic(response, pathname) {
     'Content-Length': statSync(filePath).size,
     'Cache-Control': 'no-cache'
   });
-  createReadStream(filePath).pipe(response);
+  if (headOnly) response.end();
+  else createReadStream(filePath).pipe(response);
   return true;
 }
 
 createServer(async (request, response) => {
   try {
     const url = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
-    if (request.method !== 'GET') {
+    const headOnly = request.method === 'HEAD';
+    if (request.method !== 'GET' && !headOnly) {
+      response.setHeader('Allow', 'GET, HEAD');
       sendJson(response, 405, { error: 'Method not allowed' });
     } else if (url.pathname === '/api/programs') {
-      sendJson(response, 200, { programs: fetchPrograms() });
+      sendJson(response, 200, { programs: fetchPrograms() }, headOnly);
     } else if (url.pathname === '/api/program') {
-      sendProgram(response, url.searchParams.get('path') || '');
+      sendProgram(response, url.searchParams.get('path') || '', headOnly);
     } else if (url.pathname === '/api/source') {
-      sendSource(response, url.searchParams.get('path') || '');
-    } else if (!serveStatic(response, url.pathname)) {
-      sendJson(response, 404, { error: 'Not found' });
+      sendSource(response, url.searchParams.get('path') || '', headOnly);
+    } else if (!serveStatic(response, url.pathname, headOnly)) {
+      sendJson(response, 404, { error: 'Not found' }, headOnly);
     }
   } catch (error) {
     console.error(error);
