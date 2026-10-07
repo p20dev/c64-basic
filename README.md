@@ -7,20 +7,26 @@ machine-language payload is required.
 
 ## Programs
 
-| Program | Type | Controls | Description |
-| --- | --- | --- | --- |
-| [Meteor Dodge](meteor-dodge/meteor-dodge.bas) | Arcade | `A`, `D`, `Q` | Dodge falling meteors and build your score. |
-| [Code Breaker](code-breaker/code-breaker.bas) | Logic | Digits, `Q` | Deduce a four-digit secret in ten guesses. |
-| [Submarine Hunt](submarine-hunt/submarine-hunt.bas) | Strategy | Coordinates, `Q` | Find three hidden submarines with limited sonar shots. |
-| [Lunar Lander](lunar-lander/lunar-lander.bas) | Simulation | `0`-`9`, `Q` | Choose engine burns and touch down gently. |
-| [Memory Matrix](memory-matrix/memory-matrix.bas) | Memory | `1`-`4`, `Q` | Repeat a growing sequence of flashing quadrants. |
-| [Robot Maze](robot-maze/robot-maze.bas) | Puzzle | `W`, `A`, `S`, `D`, `Q` | Navigate a freshly generated maze to its exit. |
-| [Music Box](music-box/music-box.bas) | Music | `A`-`K`, `1`-`3`, `Q` | Play the SID chip as a small computer keyboard. |
-| [Pixel Painter](pixel-painter/pixel-painter.bas) | Creative | Cursor keys, Space, `C`, `Q` | Draw character-cell pictures on the screen. |
-| [Stock Trader](stock-trader/stock-trader.bas) | Simulation | `B`, `S`, `W`, `Q` | Trade a volatile stock over twenty market days. |
-| [Starfield](starfield/starfield.bas) | Demo | `1`-`3`, `Q` | Watch and control a layered animated starfield. |
+| Program | Type | Controls | Description | Play online |
+| --- | --- | --- | --- | --- |
+| [Meteor Dodge](meteor-dodge/meteor-dodge.bas) | Arcade | `A`, `D`, `Q` | Dodge falling meteors and build your score. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#meteor-dodge) |
+| [Code Breaker](code-breaker/code-breaker.bas) | Logic | Digits, `Q` | Deduce a four-digit secret in ten guesses. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#code-breaker) |
+| [Submarine Hunt](submarine-hunt/submarine-hunt.bas) | Strategy | Coordinates, `Q` | Find three hidden submarines with limited sonar shots. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#submarine-hunt) |
+| [Lunar Lander](lunar-lander/lunar-lander.bas) | Simulation | `0`-`9`, `Q` | Choose engine burns and touch down gently. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#lunar-lander) |
+| [Memory Matrix](memory-matrix/memory-matrix.bas) | Memory | `1`-`4`, `Q` | Repeat a growing sequence of flashing quadrants. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#memory-matrix) |
+| [Robot Maze](robot-maze/robot-maze.bas) | Puzzle | `W`, `A`, `S`, `D`, `Q` | Navigate a freshly generated maze to its exit. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#robot-maze) |
+| [Music Box](music-box/music-box.bas) | Music | `A`-`K`, `1`-`3`, `Q` | Play the SID chip as a small computer keyboard. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#music-box) |
+| [Pixel Painter](pixel-painter/pixel-painter.bas) | Creative | Cursor keys, Space, `C`, `Q` | Draw character-cell pictures on the screen. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#pixel-painter) |
+| [Stock Trader](stock-trader/stock-trader.bas) | Simulation | `B`, `S`, `W`, `Q` | Trade a volatile stock over twenty market days. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#stock-trader) |
+| [Starfield](starfield/starfield.bas) | Demo | `1`-`3`, `Q` | Watch and control a layered animated starfield. | [Run program](https://htmlpreview.github.io/?https://git.p20.dev/christian/c64-basic/raw/branch/main/runner.html#starfield) |
 
 ## Running the programs
+
+Click a **Run program** link in the table to launch that program directly in a
+browser-based VICE x64sc emulator powered by WebAssembly. The runner downloads
+the emulator from the EmulatorJS CDN; the program itself is embedded in the
+repository's runner, so no file picker or manual loading is required. Click the
+emulator once to give it keyboard focus and enable audio.
 
 Each directory contains an editable, line-numbered `.bas` listing and a matching
 tokenized `.prg` file. The PRGs use the normal C64 BASIC load address, `$0801`.
