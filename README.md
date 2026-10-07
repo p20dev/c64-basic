@@ -32,6 +32,8 @@ Open [http://localhost:8134](http://localhost:8134), or click a **Run program**
 link in the table. The app runs the VICE x64sc core through WebAssembly and
 downloads the selected PRG through its own backend, avoiding browser CORS
 restrictions. Click inside the emulator to enable keyboard input and sound.
+Direct keyboard input is enabled by default, mouse locking is disabled, and
+moving the pointer anywhere over the emulator reveals its control bar.
 
 The app reads the public repository tree at runtime. New `.prg` files pushed to
 the configured branch appear after clicking **Refresh list**; rebuilding the

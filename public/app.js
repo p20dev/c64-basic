@@ -53,6 +53,11 @@ function startEmulator(programPath) {
   window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
   window.EJS_startOnLoaded = true;
   window.EJS_language = 'en-US';
+  window.EJS_defaultOptions = {
+    menubarBehavior: 'anywhere',
+    keyboardInput: 'enabled',
+    lockMouse: 'disabled'
+  };
 
   const loader = document.createElement('script');
   loader.src = `${window.EJS_pathtodata}loader.js`;
