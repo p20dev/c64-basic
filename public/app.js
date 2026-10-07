@@ -46,6 +46,10 @@ function renderPrograms() {
   for (const program of programs) {
     const card = document.createElement('article');
     card.className = 'program-card';
+    const programUrl = `/?program=${encodeURIComponent(program.path)}`;
+    card.addEventListener('click', event => {
+      if (!event.target.closest('a, button')) location.href = programUrl;
+    });
 
     const pill = document.createElement('span');
     pill.className = 'type-pill';
@@ -71,13 +75,13 @@ function renderPrograms() {
     const actions = document.createElement('div');
     actions.className = 'program-actions';
     const run = document.createElement('a');
-    run.className = 'program-action primary-action';
-    run.href = `/?program=${encodeURIComponent(program.path)}`;
-    run.textContent = 'Run program →';
+    run.className = 'card-action';
+    run.href = programUrl;
+    run.innerHTML = '<span class="play-icon" aria-hidden="true">▶</span><span>Run</span>';
     const source = document.createElement('button');
-    source.className = 'source-action';
+    source.className = 'card-action';
     source.type = 'button';
-    source.textContent = 'Show source';
+    source.innerHTML = '<span class="code-icon" aria-hidden="true">&lt;/&gt;</span><span>Source</span>';
     source.disabled = !program.source;
     source.addEventListener('click', () => showSource(program));
     actions.append(run, source);
