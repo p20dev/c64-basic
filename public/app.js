@@ -4,47 +4,102 @@ const status = document.querySelector('#status');
 const programsElement = document.querySelector('#programs');
 const refreshButton = document.querySelector('#refresh');
 const searchInput = document.querySelector('#search');
-const typeFilter = document.querySelector('#type-filter');
+const categoryFilter = document.querySelector('#category-filter');
+const languageFilter = document.querySelector('#language-filter');
 const sortOrder = document.querySelector('#sort-order');
 const gridViewButton = document.querySelector('#grid-view');
 const listViewButton = document.querySelector('#list-view');
 const sourceModal = document.querySelector('#source-modal');
 const sourceTitle = document.querySelector('#source-title');
+const sourceKind = document.querySelector('#source-kind');
 const sourceStatus = document.querySelector('#source-status');
 const sourceCode = document.querySelector('#source-code');
+const programBadges = document.querySelector('#program-badges');
+const programDescription = document.querySelector('#program-description');
+const programControls = document.querySelector('#program-controls');
 let allPrograms = [];
 
-function titleFromPath(path) {
-  const filename = path.split('/').at(-1).replace(/\.prg$/i, '');
-  return filename.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+const categoryMeta = {
+  Arcade: { icon: '🎮', color: '#d65f5f' },
+  Creative: { icon: '✎', color: '#65b96d' },
+  Demo: { icon: '✦', color: '#75a9dc' },
+  Dice: { icon: '⚄', color: '#d8d4c4' },
+  Educational: { icon: '⌁', color: '#b98a64' },
+  Logic: { icon: '◆', color: '#67b6bd' },
+  Memory: { icon: '◫', color: '#9b6bd6' },
+  Music: { icon: '♪', color: '#d668a4' },
+  Puzzle: { icon: '⌘', color: '#d6c85c' },
+  Reflex: { icon: '⚡', color: '#ef725f' },
+  Simulation: { icon: '⚙', color: '#6d8ed6' },
+  Strategy: { icon: '♟', color: '#d98f45' },
+  Trivia: { icon: '?', color: '#dfaa45' },
+  Utility: { icon: '⚒', color: '#a5acb8' },
+  Word: { icon: 'Aa', color: '#55b7a4' }
+};
+
+const languageLabels = {
+  basic: 'BASIC',
+  'machine-code': 'Machine Code'
+};
+
+function slugify(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-const typeIcons = {
-  Arcade: '🎮',
-  Logic: '◆',
-  Strategy: '♟',
-  Simulation: '⚙',
-  Memory: '◫',
-  Puzzle: '⌘',
-  Music: '♪',
-  Creative: '✎',
-  Demo: '✦',
-  Dice: '⚄',
-  Word: 'Aa',
-  Reflex: '⚡',
-  Educational: '⌁',
-  Trivia: '?',
-  Utility: '⚒'
-};
+function categoryFromRoute() {
+  const match = location.pathname.match(/^\/category\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/);
+  return match?.[1] || '';
+}
+
+function createCategoryPill(category) {
+  const meta = categoryMeta[category] || { icon: '●', color: '#a5acb8' };
+  const pill = document.createElement('a');
+  pill.className = 'category-pill';
+  pill.href = `/category/${slugify(category)}`;
+  pill.style.setProperty('--category-color', meta.color);
+  const icon = document.createElement('span');
+  icon.setAttribute('aria-hidden', 'true');
+  icon.textContent = meta.icon;
+  const label = document.createElement('span');
+  label.textContent = category;
+  pill.append(icon, label);
+  pill.setAttribute('aria-label', `Show all ${category} programs`);
+  return pill;
+}
+
+function createLanguageBadge(language) {
+  const badge = document.createElement('span');
+  badge.className = `language-badge language-${language}`;
+  badge.textContent = languageLabels[language] || language;
+  return badge;
+}
+
+function createKeyGroup(keys) {
+  const group = document.createElement('span');
+  group.className = 'key-group';
+  for (const keyName of keys) {
+    const key = document.createElement('kbd');
+    key.textContent = keyName;
+    group.append(key);
+  }
+  return group;
+}
+
+function searchText(program) {
+  const controls = program.controls.flatMap(control => [...control.keys, control.description]);
+  return `${program.title} ${program.description} ${program.category} ${languageLabels[program.language]} ${controls.join(' ')}`.toLowerCase();
+}
 
 function renderPrograms() {
   const query = searchInput.value.trim().toLowerCase();
-  const selectedType = typeFilter.value;
+  const selectedCategory = categoryFilter.value;
+  const selectedLanguage = languageFilter.value;
   const programs = allPrograms
-    .filter(program => !selectedType || program.type === selectedType)
-    .filter(program => !query || `${program.title} ${program.description} ${program.type} ${program.controls.join(' ')}`.toLowerCase().includes(query))
+    .filter(program => !selectedCategory || program.category === selectedCategory)
+    .filter(program => !selectedLanguage || program.language === selectedLanguage)
+    .filter(program => !query || searchText(program).includes(query))
     .sort((left, right) => {
-      if (sortOrder.value === 'type') return left.type.localeCompare(right.type) || left.title.localeCompare(right.title);
+      if (sortOrder.value === 'category') return left.category.localeCompare(right.category) || left.title.localeCompare(right.title);
       return left.title.localeCompare(right.title);
     });
 
@@ -57,9 +112,9 @@ function renderPrograms() {
       if (!event.target.closest('a, button')) location.href = programUrl;
     });
 
-    const pill = document.createElement('span');
-    pill.className = 'type-pill';
-    pill.textContent = `${typeIcons[program.type] || '●'} ${program.type}`;
+    const badges = document.createElement('div');
+    badges.className = 'card-badges';
+    badges.append(createCategoryPill(program.category), createLanguageBadge(program.language));
 
     const title = document.createElement('h2');
     title.className = 'program-title';
@@ -68,15 +123,6 @@ function renderPrograms() {
     const description = document.createElement('p');
     description.className = 'program-description';
     description.textContent = program.description;
-
-    const controls = document.createElement('div');
-    controls.className = 'controls';
-    controls.setAttribute('aria-label', `Controls: ${program.controls.join(', ')}`);
-    for (const control of program.controls) {
-      const key = document.createElement('kbd');
-      key.textContent = control;
-      controls.append(key);
-    }
 
     const actions = document.createElement('div');
     actions.className = 'program-actions';
@@ -91,14 +137,16 @@ function renderPrograms() {
     source.disabled = !program.source;
     source.addEventListener('click', () => showSource(program));
     actions.append(run, source);
-    card.append(pill, title, description, controls, actions);
+    card.append(badges, title, description, actions);
     programsElement.append(card);
   }
+  status.className = 'status';
   status.textContent = `${programs.length} of ${allPrograms.length} programs shown`;
 }
 
 async function showSource(program) {
   sourceTitle.textContent = program.title;
+  sourceKind.textContent = program.language === 'machine-code' ? 'Assembly source' : 'BASIC V2 source';
   sourceStatus.hidden = false;
   sourceStatus.className = 'status';
   sourceStatus.textContent = 'Loading source…';
@@ -117,6 +165,15 @@ async function showSource(program) {
   }
 }
 
+function populateFilters(programs) {
+  const categories = [...new Set(programs.map(program => program.category))].sort();
+  categoryFilter.replaceChildren(new Option('All categories', ''), ...categories.map(category => new Option(category, category)));
+  const routeSlug = categoryFromRoute();
+  const routeCategory = categories.find(category => slugify(category) === routeSlug);
+  if (routeCategory) categoryFilter.value = routeCategory;
+  else categoryFilter.value = '';
+}
+
 async function loadPrograms() {
   status.hidden = false;
   status.className = 'status';
@@ -127,10 +184,7 @@ async function loadPrograms() {
     if (!response.ok) throw new Error('The program list could not be loaded.');
     const { programs } = await response.json();
     allPrograms = programs;
-    const currentType = typeFilter.value;
-    const types = [...new Set(programs.map(program => program.type))].sort();
-    typeFilter.replaceChildren(new Option('All types', ''), ...types.map(type => new Option(type, type)));
-    if (types.includes(currentType)) typeFilter.value = currentType;
+    populateFilters(programs);
     renderPrograms();
   } catch (error) {
     status.className = 'status error';
@@ -140,18 +194,31 @@ async function loadPrograms() {
   }
 }
 
+function renderProgramDetails(program) {
+  programBadges.replaceChildren(createCategoryPill(program.category), createLanguageBadge(program.language));
+  programDescription.textContent = program.description;
+  programControls.replaceChildren();
+  for (const control of program.controls) {
+    const row = document.createElement('div');
+    row.className = 'control-row';
+    const description = document.createElement('span');
+    description.textContent = control.description;
+    row.append(createKeyGroup(control.keys), description);
+    programControls.append(row);
+  }
+}
+
 function startEmulator(program) {
-  const programPath = program.path;
   library.hidden = true;
   player.hidden = false;
-  const title = program.title || titleFromPath(programPath);
-  document.title = `${title} — C64 BASIC Collection`;
-  document.querySelector('#program-title').textContent = title;
+  document.title = `${program.title} — C64 Program Collection`;
+  document.querySelector('#program-title').textContent = program.title;
+  renderProgramDetails(program);
 
   window.EJS_player = '#game';
   window.EJS_core = 'vice_x64sc';
-  window.EJS_gameUrl = `/api/program?path=${encodeURIComponent(programPath)}`;
-  window.EJS_gameName = programPath.split('/').at(-1);
+  window.EJS_gameUrl = `/api/program?path=${encodeURIComponent(program.path)}`;
+  window.EJS_gameName = program.path.split('/').at(-1);
   window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
   window.EJS_startOnLoaded = true;
   window.EJS_language = 'en-US';
@@ -188,15 +255,29 @@ async function loadProgramPage(slug) {
   }
 }
 
+function setCategory(category) {
+  categoryFilter.value = category;
+  const url = category ? `/category/${slugify(category)}` : '/';
+  history.pushState({}, '', url);
+  renderPrograms();
+}
+
 refreshButton.addEventListener('click', loadPrograms);
 searchInput.addEventListener('input', renderPrograms);
-typeFilter.addEventListener('change', renderPrograms);
+categoryFilter.addEventListener('change', () => setCategory(categoryFilter.value));
+languageFilter.addEventListener('change', renderPrograms);
 sortOrder.addEventListener('change', renderPrograms);
 gridViewButton.addEventListener('click', () => setView('grid'));
 listViewButton.addEventListener('click', () => setView('list'));
 document.querySelector('#close-source').addEventListener('click', () => sourceModal.close());
 sourceModal.addEventListener('click', event => {
   if (event.target === sourceModal) sourceModal.close();
+});
+window.addEventListener('popstate', () => {
+  if (!library.hidden) {
+    populateFilters(allPrograms);
+    renderPrograms();
+  }
 });
 
 function setView(view) {
@@ -217,4 +298,3 @@ if (legacyProgramPath) {
   location.replace(`/program/${encodeURIComponent(slug)}`);
 } else if (programPage) loadProgramPage(decodeURIComponent(programPage[1]));
 else loadPrograms();
-

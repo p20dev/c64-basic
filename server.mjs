@@ -21,18 +21,31 @@ function sendJson(response, status, value, headOnly = false) {
 function fetchPrograms() {
   const programs = JSON.parse(readFileSync(manifestPath, 'utf8'));
   if (!Array.isArray(programs)) throw new Error('programs.json must contain an array');
+  const slugs = new Set();
   return programs.map(program => {
+    if (!program.title || !program.category || !program.description) throw new Error('Every program must include title, category, and description');
+    if (!['basic', 'machine-code'].includes(program.language)) throw new Error(`Invalid language for ${program.title}`);
+    if (!Array.isArray(program.controls) || !program.controls.length || program.controls.some(control => !Array.isArray(control.keys) || !control.keys.length || !control.description)) {
+      throw new Error(`Invalid controls for ${program.title}`);
+    }
     if (!program.path?.toLowerCase().endsWith('.prg')) throw new Error('Every program must reference a PRG file');
     const filePath = resolve(programDirectory, program.path);
     if (!filePath.startsWith(programDirectory + sep) || !existsSync(filePath) || !statSync(filePath).isFile()) {
       throw new Error(`Program file is missing: ${program.path}`);
     }
-    const sourcePath = program.source || program.path.replace(/\.prg$/i, '.bas');
+    const sourcePath = program.source;
+    const expectedExtension = program.language === 'basic' ? '.bas' : '.asm';
+    if (!sourcePath?.toLowerCase().endsWith(expectedExtension)) throw new Error(`Invalid source file for ${program.title}`);
     const sourceFilePath = resolve(programDirectory, sourcePath);
+    if (!sourceFilePath.startsWith(programDirectory + sep) || !existsSync(sourceFilePath) || !statSync(sourceFilePath).isFile()) {
+      throw new Error(`Source file is missing: ${sourcePath}`);
+    }
+    const slug = program.path.split('/')[0];
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slugs.has(slug)) throw new Error(`Invalid or duplicate program slug: ${slug}`);
+    slugs.add(slug);
     return {
       ...program,
-      slug: program.path.split('/')[0],
-      source: sourceFilePath.startsWith(programDirectory + sep) && existsSync(sourceFilePath) ? sourcePath : null,
+      slug,
       size: statSync(filePath).size
     };
   });
@@ -74,7 +87,8 @@ function sendSource(response, programPath, headOnly = false) {
 
 function serveStatic(response, pathname, headOnly = false) {
   const isProgramPage = /^\/program\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname);
-  const requested = pathname === '/' || isProgramPage ? 'index.html' : pathname.slice(1);
+  const isCategoryPage = /^\/category\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname);
+  const requested = pathname === '/' || isProgramPage || isCategoryPage ? 'index.html' : pathname.slice(1);
   const filePath = normalize(join(publicDirectory, requested));
   if (!filePath.startsWith(publicDirectory) || !existsSync(filePath) || !statSync(filePath).isFile()) {
     return false;

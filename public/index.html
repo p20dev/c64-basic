@@ -3,34 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Run the C64 BASIC Collection in a browser-based WASM VICE emulator.">
-  <title>C64 BASIC Collection</title>
+  <meta name="description" content="Explore BASIC and machine-code programs for the Commodore 64 in a browser-based WASM VICE emulator.">
+  <title>C64 Program Collection</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="/">C64 BASIC Collection</a>
+    <a class="brand" href="/">C64 Program Collection</a>
     <span>VICE x64sc · WebAssembly</span>
   </header>
   <main>
     <section id="library" class="panel">
       <p class="eyebrow">Program library</p>
       <h1>Small programs. Pure 8-bit fun.</h1>
-      <p class="lede">Explore a growing collection of games, puzzles, creative tools, and audiovisual experiments written in Commodore 64 BASIC. Pick something that catches your eye, run it instantly, or open the source to see how every line works.</p>
+      <p class="lede">Explore a growing collection of games, puzzles, creative tools, and audiovisual experiments written in Commodore 64 BASIC and 6502 machine code. Pick something that catches your eye, run it instantly, or open the source to see how it works.</p>
       <div class="library-toolbar" aria-label="Program library controls">
         <label class="search-field">
           <span class="sr-only">Search programs</span>
           <input id="search" type="search" placeholder="Search programs…" autocomplete="off">
         </label>
         <label>
-          <span class="sr-only">Filter by type</span>
-          <select id="type-filter"><option value="">All types</option></select>
+          <span class="sr-only">Filter by category</span>
+          <select id="category-filter"><option value="">All categories</option></select>
+        </label>
+        <label>
+          <span class="sr-only">Filter by language</span>
+          <select id="language-filter">
+            <option value="">All languages</option>
+            <option value="basic">BASIC</option>
+            <option value="machine-code">Machine Code</option>
+          </select>
         </label>
         <label>
           <span class="sr-only">Sort programs</span>
           <select id="sort-order">
             <option value="title">Sort: Title</option>
-            <option value="type">Sort: Type</option>
+            <option value="category">Sort: Category</option>
           </select>
         </label>
         <div class="view-switcher" role="group" aria-label="View style">
@@ -47,9 +55,15 @@
         <div>
           <p class="eyebrow">Now running</p>
           <h1 id="program-title"></h1>
+          <div id="program-badges" class="program-badges"></div>
         </div>
         <a class="secondary button" href="/">Back to library</a>
       </div>
+      <p id="program-description" class="program-page-description"></p>
+      <section class="instructions-panel" aria-labelledby="instructions-title">
+        <h2 id="instructions-title">Controls</h2>
+        <div id="program-controls" class="control-list"></div>
+      </section>
       <p class="hint">Click inside the emulator to enable keyboard input and sound.</p>
       <div id="game"></div>
       <p id="emulator-error" class="error" hidden></p>
@@ -58,7 +72,7 @@
   <dialog id="source-modal" class="source-modal">
     <div class="modal-heading">
       <div>
-        <p class="eyebrow">BASIC V2 source</p>
+        <p id="source-kind" class="eyebrow">Program source</p>
         <h2 id="source-title">Program source</h2>
       </div>
       <button id="close-source" class="icon-button" type="button" aria-label="Close source">×</button>

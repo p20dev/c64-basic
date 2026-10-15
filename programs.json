@@ -1,143 +1,140 @@
 [
   {
-    "title": "Meteor Dodge",
-    "type": "Arcade",
+    "title": "Meteor Dodge", "category": "Arcade", "language": "basic",
     "description": "Dodge falling meteors and build your score.",
-    "controls": ["A", "D", "Q"],
-    "path": "meteor-dodge/meteor-dodge.prg"
+    "controls": [{"keys":["A"],"description":"Move left"},{"keys":["D"],"description":"Move right"},{"keys":["Q"],"description":"Quit"}],
+    "path": "meteor-dodge/meteor-dodge.prg", "source": "meteor-dodge/meteor-dodge.bas"
   },
   {
-    "title": "Code Breaker",
-    "type": "Logic",
+    "title": "Code Breaker", "category": "Logic", "language": "basic",
     "description": "Deduce a four-digit secret in ten guesses.",
-    "controls": ["0-9", "Q"],
-    "path": "code-breaker/code-breaker.prg"
+    "controls": [{"keys":["0-9"],"description":"Enter a four-digit guess"},{"keys":["RETURN"],"description":"Submit the guess"},{"keys":["Q"],"description":"Quit"}],
+    "path": "code-breaker/code-breaker.prg", "source": "code-breaker/code-breaker.bas"
   },
   {
-    "title": "Submarine Hunt",
-    "type": "Strategy",
+    "title": "Submarine Hunt", "category": "Strategy", "language": "basic",
     "description": "Find three hidden submarines with limited sonar shots.",
-    "controls": ["ROW", "COLUMN", "Q"],
-    "path": "submarine-hunt/submarine-hunt.prg"
+    "controls": [{"keys":["ROW","COLUMN"],"description":"Enter sonar coordinates"},{"keys":["RETURN"],"description":"Fire a sonar shot"},{"keys":["0","0"],"description":"Quit"}],
+    "path": "submarine-hunt/submarine-hunt.prg", "source": "submarine-hunt/submarine-hunt.bas"
   },
   {
-    "title": "Lunar Lander",
-    "type": "Simulation",
+    "title": "Lunar Lander", "category": "Simulation", "language": "basic",
     "description": "Choose engine burns and touch down gently.",
-    "controls": ["0-9", "Q"],
-    "path": "lunar-lander/lunar-lander.prg"
+    "controls": [{"keys":["0-9"],"description":"Choose engine burn strength"},{"keys":["RETURN"],"description":"Commit the burn"},{"keys":["-1"],"description":"Quit"}],
+    "path": "lunar-lander/lunar-lander.prg", "source": "lunar-lander/lunar-lander.bas"
   },
   {
-    "title": "Memory Matrix",
-    "type": "Memory",
+    "title": "Memory Matrix", "category": "Memory", "language": "basic",
     "description": "Repeat a growing sequence of flashing quadrants.",
-    "controls": ["1", "2", "3", "4", "Q"],
-    "path": "memory-matrix/memory-matrix.prg"
+    "controls": [{"keys":["1","2","3","4"],"description":"Repeat the flashed quadrant"},{"keys":["Q"],"description":"Quit"}],
+    "path": "memory-matrix/memory-matrix.prg", "source": "memory-matrix/memory-matrix.bas"
   },
   {
-    "title": "Robot Maze",
-    "type": "Puzzle",
+    "title": "Robot Maze", "category": "Puzzle", "language": "basic",
     "description": "Navigate a freshly generated maze to its exit.",
-    "controls": ["W", "A", "S", "D", "Q"],
-    "path": "robot-maze/robot-maze.prg"
+    "controls": [{"keys":["W","A","S","D"],"description":"Move the robot"},{"keys":["Q"],"description":"Quit"}],
+    "path": "robot-maze/robot-maze.prg", "source": "robot-maze/robot-maze.bas"
   },
   {
-    "title": "Music Box",
-    "type": "Music",
+    "title": "Music Box", "category": "Music", "language": "basic",
     "description": "Play the SID chip as a small computer keyboard.",
-    "controls": ["A-K", "1", "2", "3", "Q"],
-    "path": "music-box/music-box.prg"
+    "controls": [{"keys":["A-K"],"description":"Play notes"},{"keys":["1","2","3"],"description":"Select square, saw, or triangle wave"},{"keys":["Q"],"description":"Quit"}],
+    "path": "music-box/music-box.prg", "source": "music-box/music-box.bas"
   },
   {
-    "title": "Pixel Painter",
-    "type": "Creative",
+    "title": "Pixel Painter", "category": "Creative", "language": "basic",
     "description": "Draw character-cell pictures on the screen.",
-    "controls": ["CURSOR KEYS", "SPACE", "C", "Q"],
-    "path": "pixel-painter/pixel-painter.prg"
+    "controls": [{"keys":["CURSOR KEYS"],"description":"Move the drawing cursor"},{"keys":["SPACE"],"description":"Draw a pixel"},{"keys":["C"],"description":"Clear the canvas"},{"keys":["Q"],"description":"Quit"}],
+    "path": "pixel-painter/pixel-painter.prg", "source": "pixel-painter/pixel-painter.bas"
   },
   {
-    "title": "Stock Trader",
-    "type": "Simulation",
+    "title": "Stock Trader", "category": "Simulation", "language": "basic",
     "description": "Trade a volatile stock over twenty market days.",
-    "controls": ["B", "S", "W", "Q"],
-    "path": "stock-trader/stock-trader.prg"
+    "controls": [{"keys":["B"],"description":"Buy shares"},{"keys":["S"],"description":"Sell shares"},{"keys":["W"],"description":"Wait for the next day"},{"keys":["Q"],"description":"Quit"}],
+    "path": "stock-trader/stock-trader.prg", "source": "stock-trader/stock-trader.bas"
   },
   {
-    "title": "Starfield",
-    "type": "Demo",
+    "title": "Starfield", "category": "Demo", "language": "basic",
     "description": "Watch and control a layered animated starfield.",
-    "controls": ["1", "2", "3", "Q"],
-    "path": "starfield/starfield.prg"
+    "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast speed"},{"keys":["Q"],"description":"Quit"}],
+    "path": "starfield/starfield.prg", "source": "starfield/starfield.bas"
   },
   {
-    "title": "Snake Trail",
-    "type": "Arcade",
+    "title": "Snake Trail", "category": "Arcade", "language": "basic",
     "description": "Guide a growing snake through a field of food and danger.",
-    "controls": ["W", "A", "S", "D", "Q"],
-    "path": "snake-trail/snake-trail.prg"
+    "controls": [{"keys":["W","A","S","D"],"description":"Steer the snake"},{"keys":["Q"],"description":"Quit"}],
+    "path": "snake-trail/snake-trail.prg", "source": "snake-trail/snake-trail.bas"
   },
   {
-    "title": "Dice Poker",
-    "type": "Dice",
+    "title": "Dice Poker", "category": "Dice", "language": "basic",
     "description": "Keep your best dice and chase a winning poker combination.",
-    "controls": ["1-5", "RETURN", "Q"],
-    "path": "dice-poker/dice-poker.prg"
+    "controls": [{"keys":["1-5"],"description":"Choose dice positions to keep"},{"keys":["RETURN"],"description":"Roll the remaining dice"},{"keys":["Q"],"description":"Quit"}],
+    "path": "dice-poker/dice-poker.prg", "source": "dice-poker/dice-poker.bas"
   },
   {
-    "title": "Word Scramble",
-    "type": "Word",
+    "title": "Word Scramble", "category": "Word", "language": "basic",
     "description": "Unscramble five computer-themed words from helpful clues.",
-    "controls": ["A-Z", "RETURN", "Q"],
-    "path": "word-scramble/word-scramble.prg"
+    "controls": [{"keys":["A-Z"],"description":"Type your answer"},{"keys":["RETURN"],"description":"Submit the answer"},{"keys":["Q"],"description":"Quit"}],
+    "path": "word-scramble/word-scramble.prg", "source": "word-scramble/word-scramble.bas"
   },
   {
-    "title": "Nim Challenge",
-    "type": "Strategy",
+    "title": "Nim Challenge", "category": "Strategy", "language": "basic",
     "description": "Outthink the computer in the classic game of twenty-one sticks.",
-    "controls": ["1", "2", "3", "0"],
-    "path": "nim-challenge/nim-challenge.prg"
+    "controls": [{"keys":["1","2","3"],"description":"Choose how many sticks to take"},{"keys":["0"],"description":"Quit"}],
+    "path": "nim-challenge/nim-challenge.prg", "source": "nim-challenge/nim-challenge.bas"
   },
   {
-    "title": "Reaction Timer",
-    "type": "Reflex",
+    "title": "Reaction Timer", "category": "Reflex", "language": "basic",
     "description": "Test your reactions across five unpredictable timed rounds.",
-    "controls": ["ANY KEY", "Q"],
-    "path": "reaction-timer/reaction-timer.prg"
+    "controls": [{"keys":["ANY KEY"],"description":"React when NOW appears"},{"keys":["Q"],"description":"Quit"}],
+    "path": "reaction-timer/reaction-timer.prg", "source": "reaction-timer/reaction-timer.bas"
   },
   {
-    "title": "Morse Trainer",
-    "type": "Educational",
+    "title": "Morse Trainer", "category": "Educational", "language": "basic",
     "description": "Learn Morse letters by reading and hearing their signals.",
-    "controls": ["A-Z", "RETURN", "Q"],
-    "path": "morse-trainer/morse-trainer.prg"
+    "controls": [{"keys":["A-Z"],"description":"Enter the decoded letter"},{"keys":["RETURN"],"description":"Submit the answer"},{"keys":["Q"],"description":"Quit"}],
+    "path": "morse-trainer/morse-trainer.prg", "source": "morse-trainer/morse-trainer.bas"
   },
   {
-    "title": "Kaleidoscope",
-    "type": "Demo",
+    "title": "Kaleidoscope", "category": "Demo", "language": "basic",
     "description": "Grow colorful symmetrical patterns across the character screen.",
-    "controls": ["SPACE", "C", "Q"],
-    "path": "kaleidoscope/kaleidoscope.prg"
+    "controls": [{"keys":["SPACE"],"description":"Start a new pattern"},{"keys":["C"],"description":"Change color"},{"keys":["Q"],"description":"Quit"}],
+    "path": "kaleidoscope/kaleidoscope.prg", "source": "kaleidoscope/kaleidoscope.bas"
   },
   {
-    "title": "World Quiz",
-    "type": "Trivia",
+    "title": "World Quiz", "category": "Trivia", "language": "basic",
     "description": "Take a seven-stop tour of world geography and landmarks.",
-    "controls": ["1", "2", "3", "Q"],
-    "path": "world-quiz/world-quiz.prg"
+    "controls": [{"keys":["1","2","3"],"description":"Choose an answer"},{"keys":["Q"],"description":"Quit"}],
+    "path": "world-quiz/world-quiz.prg", "source": "world-quiz/world-quiz.bas"
   },
   {
-    "title": "Life Lab",
-    "type": "Simulation",
+    "title": "Life Lab", "category": "Simulation", "language": "basic",
     "description": "Observe generations of Conway's cellular automaton evolve.",
-    "controls": ["SPACE", "R", "Q"],
-    "path": "life-lab/life-lab.prg"
+    "controls": [{"keys":["SPACE"],"description":"Pause or continue"},{"keys":["R"],"description":"Create a new random colony"},{"keys":["Q"],"description":"Quit"}],
+    "path": "life-lab/life-lab.prg", "source": "life-lab/life-lab.bas"
   },
   {
-    "title": "Cipher Wheel",
-    "type": "Utility",
+    "title": "Cipher Wheel", "category": "Utility", "language": "basic",
     "description": "Encode and decode secret messages with a Caesar shift.",
-    "controls": ["E", "D", "N", "Q"],
-    "path": "cipher-wheel/cipher-wheel.prg"
+    "controls": [{"keys":["E","D"],"description":"Choose encode or decode"},{"keys":["N"],"description":"Enter another message"},{"keys":["Q"],"description":"Quit"}],
+    "path": "cipher-wheel/cipher-wheel.prg", "source": "cipher-wheel/cipher-wheel.bas"
+  },
+  {
+    "title": "Sprite Playground", "category": "Creative", "language": "machine-code",
+    "description": "Move and recolor a hardware sprite in a responsive VIC-II playground.",
+    "controls": [{"keys":["W","A","S","D"],"description":"Move the sprite"},{"keys":["C"],"description":"Change sprite color"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "sprite-playground/sprite-playground.prg", "source": "sprite-playground/sprite-playground.asm"
+  },
+  {
+    "title": "Raster Bars", "category": "Demo", "language": "machine-code",
+    "description": "Paint animated bands of color with cycle-aware VIC-II raster timing.",
+    "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast movement"},{"keys":["C"],"description":"Change color palette"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "raster-bars/raster-bars.prg", "source": "raster-bars/raster-bars.asm"
+  },
+  {
+    "title": "SID Arpeggiator", "category": "Music", "language": "machine-code",
+    "description": "Shape a looping SID arpeggio with notes, waveforms, and tempo controls.",
+    "controls": [{"keys":["A-K"],"description":"Select the root note"},{"keys":["1","2","3"],"description":"Select triangle, saw, or pulse wave"},{"keys":["+","-"],"description":"Increase or decrease tempo"},{"keys":["SPACE"],"description":"Pause or resume playback"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "sid-arpeggiator/sid-arpeggiator.prg", "source": "sid-arpeggiator/sid-arpeggiator.asm"
   }
 ]
-

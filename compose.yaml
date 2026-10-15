@@ -9,3 +9,12 @@ services:
       - .:/programs:ro
     restart: unless-stopped
 
+  assembler:
+    profiles: ["tools"]
+    build:
+      context: .
+      dockerfile: tools/acme/Dockerfile
+    working_dir: /programs
+    volumes:
+      - .:/programs
+
