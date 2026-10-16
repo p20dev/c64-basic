@@ -341,6 +341,16 @@ scroll_shift_loop:
     sty scroll_position
     lda scroll_message
 insert_scroll_char:
+    ; The message is stored as portable ASCII.  The VIC-II character screen
+    ; uses screen codes, where uppercase A-Z are 1-26 rather than 65-90.
+    ; Convert explicitly instead of relying on the assembler's active
+    ; conversion table.
+    cmp #65
+    bcc store_scroll_char
+    cmp #91
+    bcs store_scroll_char
+    and #$1f
+store_scroll_char:
     sta $07e7
     inc scroll_position
     lda palette
@@ -434,6 +444,9 @@ silence_sid:
     rts
 
 draw_raster_frame:
+    ; Keep the KERNAL IRQ from interrupting a color change halfway through a
+    ; raster line.  It is enabled again before returning to the main loop.
+    sei
     lda #45
     jsr wait_raster
     lda old_d016
@@ -469,6 +482,7 @@ raster_band_loop:
     and #$f8
     ora scroll_fine
     sta $d016
+    cli
     rts
 
 wait_raster:
@@ -626,7 +640,7 @@ bass_notes: !byte 0,0,0,0,3,3,3,3,5,5,5,5,3,3,1,1
 drum_steps: !byte 1,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0
 
 scroll_message:
-!scr "   NEON RIFT   RASTER LIGHT MEETS EIGHT ORBITING SPRITES AND THREE VOICES OF SID   GREETINGS FROM C64.P20.DEV   "
+!text "   NEON RIFT   RASTER LIGHT MEETS EIGHT ORBITING SPRITES AND THREE VOICES OF SID   GREETINGS FROM C64.P20.DEV   "
 !byte 0
 
 star_positions_lo:
