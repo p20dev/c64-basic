@@ -1,6 +1,6 @@
 # C64 Program Collection
 
-Thirty-one small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
+Thirty-two small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
 
 Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 
@@ -39,6 +39,7 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | PETSCII Aquarium | 2026-10-16 | Simulation | Machine Code | `F`, `1`-`3`, `Q` | Watch a tiny animated aquarium and feed its roaming fish. | [ASM](petscii-aquarium/petscii-aquarium.asm) | [Run](https://c64.p20.dev/program/petscii-aquarium) |
 | Fifteen Puzzle | 2026-10-16 | Puzzle | Machine Code | `W`, `A`, `S`, `D`, `R`, `Q` | Slide numbered tiles until the classic four-by-four board is restored. | [ASM](fifteen-puzzle/fifteen-puzzle.asm) | [Run](https://c64.p20.dev/program/fifteen-puzzle) |
 | Plasma Grid | 2026-10-16 | Demo | Machine Code | `1`-`3`, `C`, Space, `Q` | Fill the screen with a flowing field of color generated in real time. | [ASM](plasma-grid/plasma-grid.asm) | [Run](https://c64.p20.dev/program/plasma-grid) |
+| Neon Rift | 2026-10-16 | Demo | Machine Code | `1`-`3`, `C`, `M`, Space, `Q` | Enter a raster-lit world of orbiting sprites, smooth scrolling, and a three-voice SID score. | [ASM](neon-rift/neon-rift.asm) | [Run](https://c64.p20.dev/program/neon-rift) |
 
 ## Running the programs
 

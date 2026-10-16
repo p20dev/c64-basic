@@ -12,7 +12,8 @@ for source in \
   typing-sprint/typing-sprint.asm \
   petscii-aquarium/petscii-aquarium.asm \
   fifteen-puzzle/fifteen-puzzle.asm \
-  plasma-grid/plasma-grid.asm
+  plasma-grid/plasma-grid.asm \
+  neon-rift/neon-rift.asm
 do
   output="${source%.asm}.prg"
   echo "Assembling $source -> $output"
