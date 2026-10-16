@@ -151,8 +151,8 @@
   },
   {
     "title": "Fireworks", "category": "Demo", "language": "machine-code", "releaseDate": "2026-10-16",
-    "description": "Launch colorful PETSCII fireworks into a night sky.",
-    "controls": [{"keys":["SPACE"],"description":"Launch a firework"},{"keys":["C"],"description":"Choose the next burst color"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "description": "Launch colorful, noisy PETSCII fireworks above a twinkling city skyline.",
+    "controls": [{"keys":["SPACE"],"description":"Launch a firework"},{"keys":["A"],"description":"Toggle the automatic fireworks show"},{"keys":["C"],"description":"Change color palette"},{"keys":["1","2","3"],"description":"Select animation speed"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "fireworks/fireworks.prg", "source": "fireworks/fireworks.asm"
   },
   {
