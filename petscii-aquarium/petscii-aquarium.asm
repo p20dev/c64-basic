@@ -452,20 +452,40 @@ exit:
 
 splash_text:
 !byte 147,13,13,13
+!byte 154
 !text "          PETSCII AQUARIUM"
 !byte 13,13
+!byte 5
 !text "   A LIVELY WORLD OF FISH AND BUBBLES"
 !byte 13,13
-!text "       F FEEDS  1-3 SPEED  Q QUITS"
+!byte 153
+!text "                CONTROLS"
+!byte 13
+!text "       "
+!byte 158
+!text "F"
+!byte 5
+!text " FEEDS  "
+!byte 158
+!text "1-3"
+!byte 5
+!text " SPEED  "
+!byte 158
+!text "Q"
+!byte 5
+!text " QUITS"
 !byte 13,13,13
-!text "             C64.P20.DEV"
+!byte 5
+!text "          HTTPS://C64.P20.DEV"
 !byte 13,13
+!byte 152
 !text "        RELEASED 16 OCTOBER 2026"
 !byte 13,13,13
+!byte 158
 !text "         PRESS SPACE TO START"
 !byte 0
 
-runtime_title: !byte 147
+runtime_title: !byte 147,154
 !text "           PETSCII AQUARIUM"
 !byte 0
 

@@ -77,6 +77,6 @@ Each program directory contains a loadable `.prg` and its readable source:
 - BASIC programs use line-numbered, uppercase `.bas` files compatible with stock Commodore BASIC V2. Their PRGs are tokenized at the normal `$0801` BASIC load address.
 - Machine-code programs use commented ACME `.asm` files. Their PRGs also load at `$0801`, where a short BASIC line starts the 6502 code with `SYS`.
 
-New programs must open with an English splash screen containing the program title, a short description, `c64.p20.dev`, the release date, and a prompt to continue with Space. Gameplay instructions belong on the splash screen rather than occupying permanent rows in the running program.
+New programs must open with an English splash screen containing a highlighted title, a short description, the full URL `https://c64.p20.dev`, the release date, and a prompt to continue with Space. The splash must include a **Controls** heading and visually distinguish its keys from their explanations. Gameplay instructions belong on the splash screen rather than occupying permanent rows in the running program.
 
 All programs are self-contained and designed for ordinary PAL and NTSC C64 hardware as well as VICE-compatible emulators.
