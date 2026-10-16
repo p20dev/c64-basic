@@ -39,7 +39,7 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | PETSCII Aquarium | 2026-10-16 | Simulation | Machine Code | `F`, `1`-`3`, `Q` | Watch a tiny animated aquarium and feed its roaming fish. | [ASM](petscii-aquarium/petscii-aquarium.asm) | [Run](https://c64.p20.dev/program/petscii-aquarium) |
 | Fifteen Puzzle | 2026-10-16 | Puzzle | Machine Code | `W`, `A`, `S`, `D`, `R`, `Q` | Slide numbered tiles until the classic four-by-four board is restored. | [ASM](fifteen-puzzle/fifteen-puzzle.asm) | [Run](https://c64.p20.dev/program/fifteen-puzzle) |
 | Plasma Grid | 2026-10-16 | Demo | Machine Code | `1`-`3`, `C`, Space, `Q` | Fill the screen with a flowing field of color generated in real time. | [ASM](plasma-grid/plasma-grid.asm) | [Run](https://c64.p20.dev/program/plasma-grid) |
-| Neon Rift | 2026-10-16 | Demo | Machine Code | `1`-`3`, `C`, `M`, Space, `Q` | Enter a raster-lit world of orbiting sprites, smooth scrolling, and a three-voice SID score. | [ASM](neon-rift/neon-rift.asm) | [Run](https://c64.p20.dev/program/neon-rift) |
+| Neon Rift | 2026-10-16 | Demo | Machine Code | `1`-`3`, `C`, `M`, Space, `Q` | Enter a neon-colored world of orbiting sprites, a scrolling message, and a three-voice SID score. | [ASM](neon-rift/neon-rift.asm) | [Run](https://c64.p20.dev/program/neon-rift) |
 
 ## Running the programs
 

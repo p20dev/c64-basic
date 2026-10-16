@@ -1,8 +1,8 @@
 !cpu 6510
 
 ; NEON RIFT
-; Raster bands, eight sine-orbiting sprites, a split fine scroller and a
-; three-voice SID sequence. All state touched by the demo is restored on Q.
+; Stable extended-color bands, eight sine-orbiting sprites, a character
+; scroller and a three-voice SID sequence. All touched state is restored on Q.
 ; Self-starting BASIC line: 10 SYS2061
 * = $0801
 !word basic_end
@@ -53,6 +53,14 @@ save_state:
     sta old_sprite_enable
     lda $d016
     sta old_d016
+    lda $d011
+    sta old_d011
+    lda $d022
+    sta old_background_2
+    lda $d023
+    sta old_background_3
+    lda $d024
+    sta old_background_4
     lda $d01c
     sta old_multicolor
     lda $d025
@@ -106,8 +114,15 @@ initialize_demo:
     sta motion_speed
     lda #7
     sta scroll_fine
+    lda old_d011
+    ora #$40
+    sta $d011
+    lda old_d016
+    and #$f8
+    sta $d016
     jsr copy_sprite
     jsr prepare_screen
+    jsr apply_palette
     lda #$ff
     sta $d015
     lda #6
@@ -160,12 +175,34 @@ clear_last_page:
     cpx #232
     bne clear_last_page
     ldx #0
+paint_band_rows:
+    lda band_screen_codes,x
+    sta band_code
+    lda row_addresses_lo,x
+    sta $fb
+    lda row_addresses_hi,x
+    sta $fc
+    ldy #0
+paint_band_columns:
+    lda band_code
+    sta ($fb),y
+    iny
+    cpy #40
+    bne paint_band_columns
+    inx
+    cpx #24
+    bne paint_band_rows
+    ldx #0
 draw_stars:
     lda star_positions_lo,x
     sta $fb
     lda star_positions_hi,x
     sta $fc
     ldy #0
+    lda star_rows,x
+    tay
+    lda band_screen_codes,y
+    sta band_code
     txa
     and #1
     beq use_dot
@@ -174,6 +211,8 @@ draw_stars:
 use_dot:
     lda #46
 store_star:
+    ora band_code
+    ldy #0
     sta ($fb),y
     inx
     cpx #28
@@ -204,6 +243,7 @@ control_color:
     lda palette
     and #3
     sta palette
+    jsr apply_palette
     jmp controls_done
 control_mute:
     cmp #77
@@ -266,16 +306,10 @@ update_motion:
 update_scroll:
     inc scroll_tick
     lda scroll_tick
-    cmp #2
+    cmp #4
     bcc motion_done
     lda #0
     sta scroll_tick
-    dec scroll_fine
-    lda scroll_fine
-    and #7
-    sta scroll_fine
-    cmp #7
-    bne motion_done
     jsr shift_scroller
 motion_done:
     rts
@@ -443,46 +477,32 @@ silence_sid:
     sta $d418
     rts
 
-draw_raster_frame:
-    ; Keep the KERNAL IRQ from interrupting a color change halfway through a
-    ; raster line.  It is enabled again before returning to the main loop.
-    sei
-    lda #45
-    jsr wait_raster
-    lda old_d016
-    and #$f8
-    sta $d016
+apply_palette:
     lda palette
     asl
-    asl
-    asl
-    tax
-    stx palette_base
-    ldx #0
-raster_band_loop:
-    stx band_index
-    lda raster_lines,x
-    jsr wait_raster
-    ldx band_index
-    txa
     clc
-    adc palette_base
-    tay
-    lda raster_colors,y
-    sta $d021
-    ldx band_index
+    adc palette
+    tax
+    lda background_palettes,x
+    sta $d022
     inx
-    cpx #8
-    bne raster_band_loop
-    lda #232
-    jsr wait_raster
+    lda background_palettes,x
+    sta $d023
+    inx
+    lda background_palettes,x
+    sta $d024
     lda #0
     sta $d021
-    lda old_d016
-    and #$f8
-    ora scroll_fine
-    sta $d016
-    cli
+    rts
+
+draw_raster_frame:
+    ; The background is built from VIC-II extended-color character cells.
+    ; No registers are changed while the frame is being drawn, so the image
+    ; remains stable in browsers, recordings and the built-in pause mode.
+    lda old_d011
+    ora #$40
+    sta $d011
+    jsr apply_palette
     rts
 
 wait_raster:
@@ -527,6 +547,14 @@ restore_sid:
     sta $d015
     lda old_d016
     sta $d016
+    lda old_d011
+    sta $d011
+    lda old_background_2
+    sta $d022
+    lda old_background_3
+    sta $d023
+    lda old_background_4
+    sta $d024
     lda old_multicolor
     sta $d01c
     lda old_sprite_mc0
@@ -565,7 +593,7 @@ splash_text:
 !text "              NEON RIFT"
 !byte 13,13
 !byte 5
-!text "  RASTER LIGHT, SPRITES AND SID MUSIC"
+!text "   NEON COLOR, SPRITES AND SID MUSIC"
 !byte 13,13,13
 !byte 153
 !text "                CONTROLS"
@@ -624,12 +652,19 @@ sine_y:
 !byte 126,120,114,108,102,96,91,86,81,77,73,70,67,65,63,62
 !byte 62,62,63,65,67,70,73,77,81,86,91,96,102,108,114,120
 
-raster_lines: !byte 56,78,100,122,144,166,188,210
-raster_colors:
-!byte 6,11,4,14,3,13,1,13
-!byte 0,9,2,8,7,1,7,8
-!byte 0,6,14,3,1,3,14,6
-!byte 0,11,12,15,1,15,12,11
+background_palettes:
+!byte 6,11,4
+!byte 9,2,8
+!byte 6,14,3
+!byte 11,12,15
+band_screen_codes:
+!byte 96,96,96,160,160,160,224,224
+!byte 96,96,160,160,224,224,96,96
+!byte 160,160,224,224,96,96,160,160
+row_addresses_lo:
+!for row,0,23 { !byte <($0400+row*40) }
+row_addresses_hi:
+!for row,0,23 { !byte >($0400+row*40) }
 sprite_colors: !byte 3,14,1,13,7,10,8,2
 scroller_colors: !byte 3,14,7,10,13,1,8,2
 
@@ -640,7 +675,7 @@ bass_notes: !byte 0,0,0,0,3,3,3,3,5,5,5,5,3,3,1,1
 drum_steps: !byte 1,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0
 
 scroll_message:
-!text "   NEON RIFT   RASTER LIGHT MEETS EIGHT ORBITING SPRITES AND THREE VOICES OF SID   GREETINGS FROM C64.P20.DEV   "
+!text "   NEON RIFT   NEON COLOR MEETS EIGHT ORBITING SPRITES AND THREE VOICES OF SID   GREETINGS FROM C64.P20.DEV   "
 !byte 0
 
 star_positions_lo:
@@ -664,6 +699,7 @@ position_temp: !byte 0
 palette: !byte 0
 palette_base: !byte 0
 band_index: !byte 0
+band_code: !byte 0
 scroll_tick: !byte 0
 scroll_fine: !byte 0
 scroll_position: !byte 0
@@ -677,6 +713,10 @@ old_border: !byte 0
 old_background: !byte 0
 old_sprite_enable: !byte 0
 old_d016: !byte 0
+old_d011: !byte 0
+old_background_2: !byte 0
+old_background_3: !byte 0
+old_background_4: !byte 0
 old_multicolor: !byte 0
 old_sprite_mc0: !byte 0
 old_sprite_mc1: !byte 0

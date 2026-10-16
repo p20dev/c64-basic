@@ -187,7 +187,7 @@
   },
   {
     "title": "Neon Rift", "category": "Demo", "language": "machine-code", "releaseDate": "2026-10-16",
-    "description": "Enter a raster-lit world of orbiting sprites, smooth scrolling, and a three-voice SID score.",
+    "description": "Enter a neon-colored world of orbiting sprites, a scrolling message, and a three-voice SID score.",
     "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast motion"},{"keys":["C"],"description":"Change the visual palette"},{"keys":["M"],"description":"Mute or restore the SID track"},{"keys":["SPACE"],"description":"Pause or resume the demo"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "neon-rift/neon-rift.prg", "source": "neon-rift/neon-rift.asm"
   }
