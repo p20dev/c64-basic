@@ -115,8 +115,12 @@ check_clock:
     lda show_state
     beq idle_frame
     cmp #1
-    beq update_rocket
-    jmp update_explosion
+    bne dispatch_explosion
+    jsr update_rocket
+    jmp main_loop
+dispatch_explosion:
+    jsr update_explosion
+    jmp main_loop
 
 idle_frame:
     lda auto_show
