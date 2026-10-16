@@ -24,6 +24,7 @@ function fetchPrograms() {
   const slugs = new Set();
   return programs.map(program => {
     if (!program.title || !program.category || !program.description) throw new Error('Every program must include title, category, and description');
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(program.releaseDate) || Number.isNaN(Date.parse(`${program.releaseDate}T00:00:00Z`))) throw new Error(`Invalid release date for ${program.title}`);
     if (!['basic', 'machine-code'].includes(program.language)) throw new Error(`Invalid language for ${program.title}`);
     if (!Array.isArray(program.controls) || !program.controls.length || program.controls.some(control => !Array.isArray(control.keys) || !control.keys.length || !control.description)) {
       throw new Error(`Invalid controls for ${program.title}`);
@@ -126,6 +127,6 @@ createServer(async (request, response) => {
     else response.end();
   }
 }).listen(port, '0.0.0.0', () => {
-  console.log(`C64 BASIC runner listening on port ${port}`);
+  console.log(`C64 Program Collection listening on port ${port}`);
 });
 

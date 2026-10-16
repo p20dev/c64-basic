@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore BASIC and machine-code programs for the Commodore 64 in a browser-based WASM VICE emulator.">
+  <link rel="canonical" href="https://c64.p20.dev/">
   <title>C64 Program Collection</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
@@ -39,6 +40,8 @@
           <select id="sort-order">
             <option value="title">Sort: Title</option>
             <option value="category">Sort: Category</option>
+            <option value="newest">Sort: Newest first</option>
+            <option value="oldest">Sort: Oldest first</option>
           </select>
         </label>
         <div class="view-switcher" role="group" aria-label="View style">
@@ -49,6 +52,7 @@
       </div>
       <p id="status" class="status">Loading programs…</p>
       <div id="programs" class="program-grid" aria-live="polite"></div>
+      <div id="program-sentinel" class="program-sentinel" aria-hidden="true"></div>
     </section>
     <section id="player" class="player" hidden>
       <div class="player-heading">
@@ -60,6 +64,7 @@
         <a class="secondary button" href="/">Back to library</a>
       </div>
       <p id="program-description" class="program-page-description"></p>
+      <p id="program-release-date" class="release-date"></p>
       <p class="hint">Click inside the emulator to enable keyboard input and sound.</p>
       <div id="game"></div>
       <p id="emulator-error" class="error" hidden></p>

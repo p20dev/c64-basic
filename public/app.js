@@ -16,25 +16,18 @@ const sourceStatus = document.querySelector('#source-status');
 const sourceCode = document.querySelector('#source-code');
 const programBadges = document.querySelector('#program-badges');
 const programDescription = document.querySelector('#program-description');
+const programReleaseDate = document.querySelector('#program-release-date');
 const programControls = document.querySelector('#program-controls');
+const programSentinel = document.querySelector('#program-sentinel');
 let allPrograms = [];
+let filteredPrograms = [];
+let visibleProgramCount = 0;
+const PROGRAM_BATCH_SIZE = 12;
 
 const categoryMeta = {
-  Arcade: { icon: '🎮', color: '#d65f5f' },
-  Creative: { icon: '✎', color: '#65b96d' },
-  Demo: { icon: '✦', color: '#75a9dc' },
-  Dice: { icon: '⚄', color: '#d8d4c4' },
-  Educational: { icon: '⌁', color: '#b98a64' },
-  Logic: { icon: '◆', color: '#67b6bd' },
-  Memory: { icon: '◫', color: '#9b6bd6' },
-  Music: { icon: '♪', color: '#d668a4' },
-  Puzzle: { icon: '⌘', color: '#d6c85c' },
-  Reflex: { icon: '⚡', color: '#ef725f' },
-  Simulation: { icon: '⚙', color: '#6d8ed6' },
-  Strategy: { icon: '♟', color: '#d98f45' },
-  Trivia: { icon: '?', color: '#dfaa45' },
-  Utility: { icon: '⚒', color: '#a5acb8' },
-  Word: { icon: 'Aa', color: '#55b7a4' }
+  Arcade: '🎮', Creative: '✎', Demo: '✦', Dice: '⚄', Educational: '⌁',
+  Logic: '◆', Memory: '◫', Music: '♪', Puzzle: '⌘', Reflex: '⚡',
+  Simulation: '⚙', Strategy: '♟', Trivia: '?', Utility: '⚒', Word: 'Aa'
 };
 
 const languageLabels = {
@@ -52,14 +45,13 @@ function categoryFromRoute() {
 }
 
 function createCategoryPill(category) {
-  const meta = categoryMeta[category] || { icon: '●', color: '#a5acb8' };
+  const iconName = categoryMeta[category] || '●';
   const pill = document.createElement('a');
   pill.className = 'category-pill';
   pill.href = `/category/${slugify(category)}`;
-  pill.style.setProperty('--category-color', meta.color);
   const icon = document.createElement('span');
   icon.setAttribute('aria-hidden', 'true');
-  icon.textContent = meta.icon;
+  icon.textContent = iconName;
   const label = document.createElement('span');
   label.textContent = category;
   pill.append(icon, label);
@@ -90,21 +82,11 @@ function searchText(program) {
   return `${program.title} ${program.description} ${program.category} ${languageLabels[program.language]} ${controls.join(' ')}`.toLowerCase();
 }
 
-function renderPrograms() {
-  const query = searchInput.value.trim().toLowerCase();
-  const selectedCategory = categoryFilter.value;
-  const selectedLanguage = languageFilter.value;
-  const programs = allPrograms
-    .filter(program => !selectedCategory || program.category === selectedCategory)
-    .filter(program => !selectedLanguage || program.language === selectedLanguage)
-    .filter(program => !query || searchText(program).includes(query))
-    .sort((left, right) => {
-      if (sortOrder.value === 'category') return left.category.localeCompare(right.category) || left.title.localeCompare(right.title);
-      return left.title.localeCompare(right.title);
-    });
+function formatReleaseDate(value) {
+  return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T00:00:00Z`));
+}
 
-  programsElement.replaceChildren();
-  for (const program of programs) {
+function createProgramCard(program) {
     const card = document.createElement('article');
     card.className = 'program-card';
     const programUrl = `/program/${encodeURIComponent(program.slug)}`;
@@ -124,6 +106,10 @@ function renderPrograms() {
     description.className = 'program-description';
     description.textContent = program.description;
 
+    const releaseDate = document.createElement('p');
+    releaseDate.className = 'release-date';
+    releaseDate.textContent = `Released ${formatReleaseDate(program.releaseDate)}`;
+
     const actions = document.createElement('div');
     actions.className = 'program-actions';
     const run = document.createElement('a');
@@ -137,11 +123,39 @@ function renderPrograms() {
     source.disabled = !program.source;
     source.addEventListener('click', () => showSource(program));
     actions.append(run, source);
-    card.append(badges, title, description, actions);
-    programsElement.append(card);
-  }
+    card.append(badges, title, description, releaseDate, actions);
+    return card;
+}
+
+function appendProgramBatch() {
+  const nextCount = Math.min(visibleProgramCount + PROGRAM_BATCH_SIZE, filteredPrograms.length);
+  const fragment = document.createDocumentFragment();
+  for (const program of filteredPrograms.slice(visibleProgramCount, nextCount)) fragment.append(createProgramCard(program));
+  programsElement.append(fragment);
+  visibleProgramCount = nextCount;
+  programSentinel.hidden = visibleProgramCount >= filteredPrograms.length;
   status.className = 'status';
-  status.textContent = `${programs.length} of ${allPrograms.length} programs shown`;
+  status.textContent = `${visibleProgramCount} of ${filteredPrograms.length} matching programs shown · ${allPrograms.length} total`;
+}
+
+function renderPrograms() {
+  const query = searchInput.value.trim().toLowerCase();
+  const selectedCategory = categoryFilter.value;
+  const selectedLanguage = languageFilter.value;
+  filteredPrograms = allPrograms
+    .filter(program => !selectedCategory || program.category === selectedCategory)
+    .filter(program => !selectedLanguage || program.language === selectedLanguage)
+    .filter(program => !query || searchText(program).includes(query))
+    .sort((left, right) => {
+      if (sortOrder.value === 'category') return left.category.localeCompare(right.category) || left.title.localeCompare(right.title);
+      if (sortOrder.value === 'newest') return right.releaseDate.localeCompare(left.releaseDate) || left.title.localeCompare(right.title);
+      if (sortOrder.value === 'oldest') return left.releaseDate.localeCompare(right.releaseDate) || left.title.localeCompare(right.title);
+      return left.title.localeCompare(right.title);
+    });
+
+  programsElement.replaceChildren();
+  visibleProgramCount = 0;
+  appendProgramBatch();
 }
 
 async function showSource(program) {
@@ -197,6 +211,7 @@ async function loadPrograms() {
 function renderProgramDetails(program) {
   programBadges.replaceChildren(createCategoryPill(program.category), createLanguageBadge(program.language));
   programDescription.textContent = program.description;
+  programReleaseDate.textContent = `Released ${formatReleaseDate(program.releaseDate)}`;
   programControls.replaceChildren();
   for (const control of program.controls) {
     const row = document.createElement('div');
@@ -279,6 +294,11 @@ window.addEventListener('popstate', () => {
     renderPrograms();
   }
 });
+
+const programObserver = new IntersectionObserver(entries => {
+  if (entries.some(entry => entry.isIntersecting) && visibleProgramCount < filteredPrograms.length) appendProgramBatch();
+}, { rootMargin: '500px 0px' });
+programObserver.observe(programSentinel);
 
 function setView(view) {
   const list = view === 'list';
