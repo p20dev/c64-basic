@@ -460,10 +460,10 @@ splash_text:
 !byte 13,13
 !byte 5
 !text "   A LIVELY WORLD OF FISH AND BUBBLES"
-!byte 13,13
+!byte 13,13,13
 !byte 153
 !text "                CONTROLS"
-!byte 13
+!byte 13,13
 !text "       "
 !byte 158
 !text "F"
