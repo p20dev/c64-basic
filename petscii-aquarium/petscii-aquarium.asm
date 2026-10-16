@@ -26,15 +26,30 @@ start:
     sta $d020
     lda #6
     sta $d021
-    lda #147
-    jsr CHROUT
+    jsr show_splash
     ldx #0
 print_title:
-    lda title,x
+    lda runtime_title,x
     beq initialize
     jsr CHROUT
     inx
     bne print_title
+
+show_splash:
+    ldx #0
+print_splash:
+    lda splash_text,x
+    beq wait_for_space
+    jsr CHROUT
+    inx
+    bne print_splash
+wait_for_space:
+    jsr GETIN
+    cmp #32
+    bne wait_for_space
+    lda #147
+    jsr CHROUT
+    rts
 
 initialize:
     lda #3
@@ -435,8 +450,23 @@ exit:
     jsr CHROUT
     rts
 
-title: !byte 147
-!text "PETSCII AQUARIUM  F FEED  1-3 SPEED  Q QUIT"
+splash_text:
+!byte 147,13,13,13
+!text "          PETSCII AQUARIUM"
+!byte 13,13
+!text "   A LIVELY WORLD OF FISH AND BUBBLES"
+!byte 13,13
+!text "       F FEEDS  1-3 SPEED  Q QUITS"
+!byte 13,13,13
+!text "             C64.P20.DEV"
+!byte 13,13
+!text "        RELEASED 16 OCTOBER 2026"
+!byte 13,13,13
+!text "         PRESS SPACE TO START"
+!byte 0
+
+runtime_title: !byte 147
+!text "           PETSCII AQUARIUM"
 !byte 0
 
 fish_x:         !byte 4,28,12,33,7,23
