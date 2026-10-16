@@ -22,11 +22,14 @@ start:
     sta old_border
     lda $d021
     sta old_background
+    lda #0
+    sta $d020
+    sta $d021
+    jsr show_splash
     lda #14
     sta $d020
     lda #6
     sta $d021
-    jsr show_splash
     ldx #0
 print_title:
     lda runtime_title,x
