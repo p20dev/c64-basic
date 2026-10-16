@@ -23,6 +23,7 @@ let allPrograms = [];
 let filteredPrograms = [];
 let visibleProgramCount = 0;
 const PROGRAM_BATCH_SIZE = 12;
+let programObserver;
 
 const categoryMeta = {
   Arcade: '🎮', Creative: '✎', Demo: '✦', Dice: '⚄', Educational: '⌁',
@@ -138,6 +139,16 @@ function appendProgramBatch() {
   status.textContent = `${visibleProgramCount} of ${filteredPrograms.length} matching programs shown · ${allPrograms.length} total`;
 }
 
+function observeProgramSentinel() {
+  programObserver.disconnect();
+  if (!programSentinel.hidden) requestAnimationFrame(() => programObserver.observe(programSentinel));
+}
+
+function loadBatchNearViewport() {
+  if (programSentinel.hidden || visibleProgramCount >= filteredPrograms.length) return;
+  if (programSentinel.getBoundingClientRect().top <= window.innerHeight + 500) appendProgramBatch();
+}
+
 function renderPrograms() {
   const query = searchInput.value.trim().toLowerCase();
   const selectedCategory = categoryFilter.value;
@@ -156,6 +167,7 @@ function renderPrograms() {
   programsElement.replaceChildren();
   visibleProgramCount = 0;
   appendProgramBatch();
+  observeProgramSentinel();
 }
 
 async function showSource(program) {
@@ -295,10 +307,11 @@ window.addEventListener('popstate', () => {
   }
 });
 
-const programObserver = new IntersectionObserver(entries => {
+programObserver = new IntersectionObserver(entries => {
   if (entries.some(entry => entry.isIntersecting) && visibleProgramCount < filteredPrograms.length) appendProgramBatch();
 }, { rootMargin: '500px 0px' });
-programObserver.observe(programSentinel);
+window.addEventListener('scroll', loadBatchNearViewport, { passive: true });
+window.addEventListener('resize', loadBatchNearViewport);
 
 function setView(view) {
   const list = view === 'list';

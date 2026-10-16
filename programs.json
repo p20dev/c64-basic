@@ -178,5 +178,11 @@
     "description": "Slide numbered tiles until the classic four-by-four board is restored.",
     "controls": [{"keys":["W","A","S","D"],"description":"Slide a tile toward the empty space"},{"keys":["R"],"description":"Shuffle the board again"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "fifteen-puzzle/fifteen-puzzle.prg", "source": "fifteen-puzzle/fifteen-puzzle.asm"
+  },
+  {
+    "title": "Plasma Grid", "category": "Demo", "language": "machine-code", "releaseDate": "2026-10-16",
+    "description": "Fill the screen with a flowing field of color generated in real time.",
+    "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast animation"},{"keys":["C"],"description":"Change color palette"},{"keys":["SPACE"],"description":"Pause or resume the animation"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "plasma-grid/plasma-grid.prg", "source": "plasma-grid/plasma-grid.asm"
   }
 ]

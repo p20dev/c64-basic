@@ -11,7 +11,8 @@ for source in \
   jiffy-clock/jiffy-clock.asm \
   typing-sprint/typing-sprint.asm \
   petscii-aquarium/petscii-aquarium.asm \
-  fifteen-puzzle/fifteen-puzzle.asm
+  fifteen-puzzle/fifteen-puzzle.asm \
+  plasma-grid/plasma-grid.asm
 do
   output="${source%.asm}.prg"
   echo "Assembling $source -> $output"
