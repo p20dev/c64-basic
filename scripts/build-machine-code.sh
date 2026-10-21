@@ -13,7 +13,8 @@ for source in \
   petscii-aquarium/petscii-aquarium.asm \
   fifteen-puzzle/fifteen-puzzle.asm \
   plasma-grid/plasma-grid.asm \
-  neon-rift/neon-rift.asm
+  neon-rift/neon-rift.asm \
+  infinite-road/infinite-road.asm
 do
   output="${source%.asm}.prg"
   echo "Assembling $source -> $output"
