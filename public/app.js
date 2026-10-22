@@ -150,10 +150,20 @@ function loadBatchNearViewport() {
   if (programSentinel.getBoundingClientRect().top <= window.innerHeight + 500) appendProgramBatch();
 }
 
+function updateFilterIndicators() {
+  searchInput.classList.toggle('active-filter', searchInput.value.trim() !== '');
+  categoryFilter.classList.toggle('active-filter', categoryFilter.value !== '');
+  languageFilter.classList.toggle('active-filter', languageFilter.value !== '');
+  resetFiltersButton.classList.toggle('filters-active', Boolean(
+    searchInput.value.trim() || categoryFilter.value || languageFilter.value
+  ));
+}
+
 function renderPrograms() {
   const query = searchInput.value.trim().toLowerCase();
   const selectedCategory = categoryFilter.value;
   const selectedLanguage = languageFilter.value;
+  updateFilterIndicators();
   filteredPrograms = allPrograms
     .filter(program => !selectedCategory || program.category === selectedCategory)
     .filter(program => !selectedLanguage || program.language === selectedLanguage)
