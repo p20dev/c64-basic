@@ -1,6 +1,6 @@
 # C64 Program Collection
 
-Thirty-three small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
+Thirty-eight small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
 
 Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 
@@ -41,6 +41,11 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | Plasma Grid | 2026-10-16 | Demo | Machine Code | `1`-`3`, `C`, Space, `Q` | Fill the screen with a flowing field of color generated in real time. | [ASM](plasma-grid/plasma-grid.asm) | [Run](https://c64.p20.dev/program/plasma-grid) |
 | Neon Rift | 2026-10-16 | Demo | Machine Code | `1`-`3`, `C`, `M`, Space, `Q` | Enter a neon-colored world of orbiting sprites, a scrolling message, and a three-voice SID score. | [ASM](neon-rift/neon-rift.asm) | [Run](https://c64.p20.dev/program/neon-rift) |
 | Infinite Road | 2026-10-21 | Demo | Machine Code | `A`, `D`, `1`-`3`, `C`, `M`, Space, `Q` | Cruise along an endless synthwave highway with sweeping curves and a driving three-voice SID score. | [ASM](infinite-road/infinite-road.asm) | [Run](https://c64.p20.dev/program/infinite-road) |
+| Projectile Lab | 2026-10-22 | Physics | BASIC | `5`-`30`, `10`-`80`, `R`, `Q` | Plot a projectile's flight from launch speed and angle. | [BAS](projectile-lab/projectile-lab.bas) | [Run](https://c64.p20.dev/program/projectile-lab) |
+| Prime Workshop | 2026-10-22 | Mathematics | BASIC | `2`-`9999`, Return, Space, `Q` | Factor whole numbers and calculate divisor counts and Euler's totient. | [BAS](prime-workshop/prime-workshop.bas) | [Run](https://c64.p20.dev/program/prime-workshop) |
+| Pi Drop | 2026-10-22 | Mathematics | BASIC | Space, `Q` | Estimate pi by dropping random coordinates into a virtual unit circle. | [BAS](pi-drop/pi-drop.bas) | [Run](https://c64.p20.dev/program/pi-drop) |
+| Wave Composer | 2026-10-22 | Physics | BASIC | `A`, `Z`, `S`, `X`, Space, `Q` | Combine two sine waves and watch interference reshape the graph. | [BAS](wave-composer/wave-composer.bas) | [Run](https://c64.p20.dev/program/wave-composer) |
+| Orbit Lab | 2026-10-22 | Physics | BASIC | `1`-`3`, `T`, `R`, Space, `Q` | Explore how velocity and gravity shape a simple two-dimensional orbit. | [BAS](orbit-lab/orbit-lab.bas) | [Run](https://c64.p20.dev/program/orbit-lab) |
 
 ## Running the programs
 

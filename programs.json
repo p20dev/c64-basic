@@ -196,5 +196,35 @@
     "description": "Cruise along an endless synthwave highway with sweeping curves and a driving three-voice SID score.",
     "controls": [{"keys":["A","D"],"description":"Shift the viewpoint left or right"},{"keys":["1","2","3"],"description":"Select slow, medium, or fast cruising speed"},{"keys":["C"],"description":"Change the color palette"},{"keys":["M"],"description":"Mute or restore the SID track"},{"keys":["SPACE"],"description":"Pause or resume the demo"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "infinite-road/infinite-road.prg", "source": "infinite-road/infinite-road.asm"
+  },
+  {
+    "title": "Projectile Lab", "category": "Physics", "language": "basic", "releaseDate": "2026-10-22",
+    "description": "Plot a projectile's flight from launch speed and angle.",
+    "controls": [{"keys":["5-30"],"description":"Choose launch speed"},{"keys":["10-80"],"description":"Choose launch angle"},{"keys":["R"],"description":"Launch again"},{"keys":["Q"],"description":"Quit"}],
+    "path": "projectile-lab/projectile-lab.prg", "source": "projectile-lab/projectile-lab.bas"
+  },
+  {
+    "title": "Prime Workshop", "category": "Mathematics", "language": "basic", "releaseDate": "2026-10-22",
+    "description": "Factor whole numbers and calculate divisor counts and Euler's totient.",
+    "controls": [{"keys":["2-9999"],"description":"Enter a whole number"},{"keys":["RETURN"],"description":"Calculate"},{"keys":["SPACE"],"description":"Try another number"},{"keys":["Q"],"description":"Quit"}],
+    "path": "prime-workshop/prime-workshop.prg", "source": "prime-workshop/prime-workshop.bas"
+  },
+  {
+    "title": "Pi Drop", "category": "Mathematics", "language": "basic", "releaseDate": "2026-10-22",
+    "description": "Estimate pi by dropping random coordinates into a virtual unit circle.",
+    "controls": [{"keys":["SPACE"],"description":"Reset the experiment"},{"keys":["Q"],"description":"Quit"}],
+    "path": "pi-drop/pi-drop.prg", "source": "pi-drop/pi-drop.bas"
+  },
+  {
+    "title": "Wave Composer", "category": "Physics", "language": "basic", "releaseDate": "2026-10-22",
+    "description": "Combine two sine waves and watch interference reshape the graph.",
+    "controls": [{"keys":["A","Z"],"description":"Raise or lower wave one frequency"},{"keys":["S","X"],"description":"Raise or lower wave two frequency"},{"keys":["SPACE"],"description":"Pause or resume"},{"keys":["Q"],"description":"Quit"}],
+    "path": "wave-composer/wave-composer.prg", "source": "wave-composer/wave-composer.bas"
+  },
+  {
+    "title": "Orbit Lab", "category": "Physics", "language": "basic", "releaseDate": "2026-10-22",
+    "description": "Explore how velocity and gravity shape a simple two-dimensional orbit.",
+    "controls": [{"keys":["1","2","3"],"description":"Select gravity strength"},{"keys":["T"],"description":"Toggle the orbit trail"},{"keys":["R"],"description":"Reset the orbit"},{"keys":["SPACE"],"description":"Pause or resume"},{"keys":["Q"],"description":"Quit"}],
+    "path": "orbit-lab/orbit-lab.prg", "source": "orbit-lab/orbit-lab.bas"
   }
 ]
