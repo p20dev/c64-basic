@@ -7,6 +7,7 @@ const searchInput = document.querySelector('#search');
 const categoryFilter = document.querySelector('#category-filter');
 const languageFilter = document.querySelector('#language-filter');
 const sortOrder = document.querySelector('#sort-order');
+const resetFiltersButton = document.querySelector('#reset-filters');
 const gridViewButton = document.querySelector('#grid-view');
 const listViewButton = document.querySelector('#list-view');
 const sourceModal = document.querySelector('#source-modal');
@@ -136,7 +137,7 @@ function appendProgramBatch() {
   visibleProgramCount = nextCount;
   programSentinel.hidden = visibleProgramCount >= filteredPrograms.length;
   status.className = 'status';
-  status.textContent = `${visibleProgramCount} of ${filteredPrograms.length} matching programs shown · ${allPrograms.length} total`;
+  status.textContent = `${filteredPrograms.length} matching ${filteredPrograms.length === 1 ? 'program' : 'programs'}`;
 }
 
 function observeProgramSentinel() {
@@ -289,7 +290,17 @@ function setCategory(category) {
   renderPrograms();
 }
 
+function resetFilters() {
+  searchInput.value = '';
+  categoryFilter.value = '';
+  languageFilter.value = '';
+  sortOrder.value = 'newest';
+  if (location.pathname !== '/') history.pushState({}, '', '/');
+  renderPrograms();
+}
+
 refreshButton.addEventListener('click', loadPrograms);
+resetFiltersButton.addEventListener('click', resetFilters);
 searchInput.addEventListener('input', renderPrograms);
 categoryFilter.addEventListener('change', () => setCategory(categoryFilter.value));
 languageFilter.addEventListener('change', renderPrograms);

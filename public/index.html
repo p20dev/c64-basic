@@ -11,7 +11,6 @@
 <body>
   <header class="site-header">
     <a class="brand" href="/">C64 Program Collection</a>
-    <span>VICE x64sc · WebAssembly</span>
   </header>
   <main>
     <section id="library" class="panel">
@@ -38,12 +37,13 @@
         <label>
           <span class="sr-only">Sort programs</span>
           <select id="sort-order">
+            <option value="newest">Sort: Newest first</option>
             <option value="title">Sort: Title</option>
             <option value="category">Sort: Category</option>
-            <option value="newest">Sort: Newest first</option>
             <option value="oldest">Sort: Oldest first</option>
           </select>
         </label>
+        <button id="reset-filters" class="reset-button" type="button">Reset</button>
         <div class="view-switcher" role="group" aria-label="View style">
           <button id="grid-view" class="view-button active" type="button" aria-pressed="true" title="Grid view">▦</button>
           <button id="list-view" class="view-button" type="button" aria-pressed="false" title="List view">☷</button>
