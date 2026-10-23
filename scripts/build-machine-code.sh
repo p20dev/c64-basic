@@ -14,7 +14,8 @@ for source in \
   fifteen-puzzle/fifteen-puzzle.asm \
   plasma-grid/plasma-grid.asm \
   neon-rift/neon-rift.asm \
-  infinite-road/infinite-road.asm
+  infinite-road/infinite-road.asm \
+  haunted-night/haunted-night.asm
 do
   output="${source%.asm}.prg"
   echo "Assembling $source -> $output"
