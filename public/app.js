@@ -100,6 +100,20 @@ function createProgramCard(program) {
     badges.className = 'card-badges';
     badges.append(createCategoryPill(program.category), createLanguageBadge(program.language));
 
+    const screenshot = document.createElement('div');
+    screenshot.className = 'card-screenshot';
+    if (program.screenshot) {
+      const image = document.createElement('img');
+      image.src = program.screenshot;
+      image.alt = `${program.title} running on a Commodore 64`;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      screenshot.append(image);
+    } else {
+      screenshot.classList.add('placeholder');
+      screenshot.innerHTML = '<span aria-hidden="true">C64</span><span class="sr-only">Screenshot not yet available</span>';
+    }
+
     const title = document.createElement('h2');
     title.className = 'program-title';
     title.textContent = program.title;
@@ -125,7 +139,7 @@ function createProgramCard(program) {
     source.disabled = !program.source;
     source.addEventListener('click', () => showSource(program));
     actions.append(run, source);
-    card.append(badges, title, description, releaseDate, actions);
+    card.append(screenshot, badges, title, description, releaseDate, actions);
     return card;
 }
 

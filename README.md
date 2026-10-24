@@ -80,6 +80,25 @@ docker compose --profile tools run --rm assembler
 
 The tools profile is opt-in and is not started by the normal app command.
 
+## Capturing screenshots
+
+Every program has a recipe in `screenshots.json`. The recipe waits for the emulator, focuses it, dismisses the splash screen, performs any program-specific actions, and captures a clean 960×720 PNG from the browser compositor. Screenshots are stored as `screenshot.png` beside each program and appear automatically in the grid view; no web-app rebuild is required.
+
+Capture screenshots that do not exist yet:
+
+```text
+docker compose --profile tools run --rm screenshots
+```
+
+Capture one program again, or rebuild the whole gallery:
+
+```text
+docker compose --profile tools run --rm screenshots haunted-night --force
+docker compose --profile tools run --rm screenshots --force
+```
+
+When adding a program, add its slug to `screenshots.json`. In most cases an empty object uses the collection's standard splash-screen recipe. Add explicit timed key actions when a program needs a particular scene. Always run and inspect the new screenshot before committing the program.
+
 ## Source format
 
 Each program directory contains a loadable `.prg` and its readable source:

@@ -44,10 +44,15 @@ function fetchPrograms() {
     const slug = program.path.split('/')[0];
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slugs.has(slug)) throw new Error(`Invalid or duplicate program slug: ${slug}`);
     slugs.add(slug);
+    const screenshotPath = resolve(programDirectory, slug, 'screenshot.png');
+    const screenshotStat = existsSync(screenshotPath) && statSync(screenshotPath).isFile() ? statSync(screenshotPath) : null;
     return {
       ...program,
       slug,
-      size: statSync(filePath).size
+      size: statSync(filePath).size,
+      screenshot: screenshotStat
+        ? `/api/screenshot?slug=${encodeURIComponent(slug)}&v=${Math.trunc(screenshotStat.mtimeMs)}`
+        : null
     };
   });
 }
@@ -86,6 +91,22 @@ function sendSource(response, programPath, headOnly = false) {
   else createReadStream(filePath).pipe(response);
 }
 
+function sendScreenshot(response, slug, headOnly = false) {
+  const program = fetchPrograms().find(entry => entry.slug === slug && entry.screenshot);
+  if (!program) {
+    sendJson(response, 404, { error: 'Program screenshot not found' }, headOnly);
+    return;
+  }
+  const filePath = resolve(programDirectory, slug, 'screenshot.png');
+  response.writeHead(200, {
+    'Content-Type': 'image/png',
+    'Content-Length': statSync(filePath).size,
+    'Cache-Control': 'public, max-age=31536000, immutable'
+  });
+  if (headOnly) response.end();
+  else createReadStream(filePath).pipe(response);
+}
+
 function serveStatic(response, pathname, headOnly = false) {
   const isProgramPage = /^\/program\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname);
   const isCategoryPage = /^\/category\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname);
@@ -118,6 +139,8 @@ createServer(async (request, response) => {
       sendProgram(response, url.searchParams.get('path') || '', headOnly);
     } else if (url.pathname === '/api/source') {
       sendSource(response, url.searchParams.get('path') || '', headOnly);
+    } else if (url.pathname === '/api/screenshot') {
+      sendScreenshot(response, url.searchParams.get('slug') || '', headOnly);
     } else if (!serveStatic(response, url.pathname, headOnly)) {
       sendJson(response, 404, { error: 'Not found' }, headOnly);
     }

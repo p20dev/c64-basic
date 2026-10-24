@@ -18,3 +18,16 @@ services:
     volumes:
       - .:/programs
 
+  screenshots:
+    profiles: ["tools"]
+    build:
+      context: .
+      dockerfile: tools/screenshots/Dockerfile
+    working_dir: /programs
+    environment:
+      SCREENSHOT_BASE_URL: http://c64-basic:8080
+    volumes:
+      - .:/programs
+    depends_on:
+      - c64-basic
+

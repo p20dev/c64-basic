@@ -1,0 +1,88 @@
+{
+  "$default": {
+    "readyTimeoutMs": 60000,
+    "settleBeforeActionsMs": 5000,
+    "actions": [{ "key": "SPACE", "waitAfterMs": 2500 }],
+    "captureAfterMs": 1500
+  },
+  "meteor-dodge": {},
+  "code-breaker": {},
+  "submarine-hunt": {},
+  "lunar-lander": {},
+  "memory-matrix": {},
+  "robot-maze": {},
+  "music-box": {},
+  "pixel-painter": {},
+  "stock-trader": {},
+  "starfield": {},
+  "snake-trail": {},
+  "dice-poker": {},
+  "word-scramble": {},
+  "nim-challenge": {},
+  "reaction-timer": {},
+  "morse-trainer": {},
+  "kaleidoscope": {},
+  "world-quiz": {},
+  "life-lab": {},
+  "cipher-wheel": {},
+  "sprite-playground": {},
+  "raster-bars": {},
+  "sid-arpeggiator": {},
+  "paddle-ball": {},
+  "smooth-scroller": {},
+  "fireworks": {
+    "actions": [
+      { "key": "SPACE", "waitAfterMs": 2200 },
+      { "key": "SPACE", "waitAfterMs": 450 }
+    ],
+    "captureAfterMs": 100
+  },
+  "jiffy-clock": {},
+  "typing-sprint": {},
+  "petscii-aquarium": {
+    "actions": [
+      { "key": "SPACE", "waitAfterMs": 2500 },
+      { "key": "F", "waitAfterMs": 700 }
+    ],
+    "captureAfterMs": 600
+  },
+  "fifteen-puzzle": {},
+  "plasma-grid": {},
+  "neon-rift": {},
+  "infinite-road": {},
+  "projectile-lab": {
+    "actions": [
+      { "key": "SPACE", "waitAfterMs": 1000 },
+      { "text": "20", "waitAfterMs": 150 },
+      { "key": "RETURN", "waitAfterMs": 500 },
+      { "text": "45", "waitAfterMs": 150 },
+      { "key": "RETURN", "waitAfterMs": 5000 }
+    ],
+    "captureAfterMs": 1000
+  },
+  "prime-workshop": {
+    "actions": [
+      { "key": "SPACE", "waitAfterMs": 1000 },
+      { "text": "360", "waitAfterMs": 150 },
+      { "key": "RETURN", "waitAfterMs": 3000 }
+    ],
+    "captureAfterMs": 500
+  },
+  "pi-drop": { "captureAfterMs": 15000 },
+  "wave-composer": { "captureAfterMs": 12000 },
+  "orbit-lab": {},
+  "haunted-night": {
+    "actions": [
+      { "key": "SPACE", "waitAfterMs": 2200 },
+      { "key": "L", "waitAfterMs": 120 }
+    ],
+    "captureAfterMs": 120
+  },
+  "happy-birthday-beca": {
+    "actions": [
+      { "key": "SPACE", "waitAfterMs": 2500 },
+      { "key": "C", "waitAfterMs": 400 }
+    ],
+    "captureAfterMs": 250
+  }
+}
