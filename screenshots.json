@@ -84,5 +84,11 @@
       { "key": "C", "waitAfterMs": 400 }
     ],
     "captureAfterMs": 250
+  },
+  "tv-fireplace": {
+    "actions": [
+      { "key": "SPACE", "waitAfterMs": 5000 }
+    ],
+    "captureAfterMs": 500
   }
 }

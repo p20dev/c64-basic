@@ -238,5 +238,11 @@
     "description": "Celebrate Beca's fifth birthday with cake, balloons, confetti, purrs, and a cheerful three-voice SID serenade.",
     "controls": [{"keys":["F"],"description":"Replay the birthday song"},{"keys":["C"],"description":"Launch a fresh confetti burst"},{"keys":["M"],"description":"Mute or restore the SID music"},{"keys":["SPACE"],"description":"Pause or resume the celebration"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "happy-birthday-beca/happy-birthday-beca.prg", "source": "happy-birthday-beca/happy-birthday-beca.asm"
+  },
+  {
+    "title": "TV Fireplace", "category": "Demo", "language": "machine-code", "releaseDate": "2026-10-24",
+    "description": "Settle beside a classic brick fireplace with dancing flames, glowing embers, rising sparks, and crackling SID sound.",
+    "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or lively flames"},{"keys":["F"],"description":"Stoke the fire"},{"keys":["C"],"description":"Change the fireplace palette"},{"keys":["S"],"description":"Mute or restore the crackling sound"},{"keys":["SPACE"],"description":"Pause or resume the fire"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "tv-fireplace/tv-fireplace.prg", "source": "tv-fireplace/tv-fireplace.asm"
   }
 ]
