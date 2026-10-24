@@ -232,5 +232,11 @@
     "description": "Visit a moonlit haunted manor alive with ghosts, bats, lightning, and a sinister three-voice SID score.",
     "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast animation"},{"keys":["L"],"description":"Summon lightning and thunder"},{"keys":["C"],"description":"Change the night palette"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["SPACE"],"description":"Pause or resume the demo"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "haunted-night/haunted-night.prg", "source": "haunted-night/haunted-night.asm"
+  },
+  {
+    "title": "Happy Birthday, Beca!", "category": "Demo", "language": "machine-code", "releaseDate": "2026-10-23",
+    "description": "Celebrate Beca's fifth birthday with cake, balloons, confetti, purrs, and a cheerful three-voice SID serenade.",
+    "controls": [{"keys":["F"],"description":"Replay the birthday song"},{"keys":["C"],"description":"Launch a fresh confetti burst"},{"keys":["M"],"description":"Mute or restore the SID music"},{"keys":["SPACE"],"description":"Pause or resume the celebration"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "happy-birthday-beca/happy-birthday-beca.prg", "source": "happy-birthday-beca/happy-birthday-beca.asm"
   }
 ]
