@@ -1,6 +1,6 @@
 # C64 Program Collection
 
-Forty-two small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
+Forty-three small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
 
 Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 
@@ -51,6 +51,10 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | TV Fireplace | 2026-10-24 | Demo | Machine Code | `1`-`3`, `F`, `C`, `S`, Space, `Q` | Settle beside a classic brick fireplace with dancing flames, glowing embers, rising sparks, and crackling SID sound. | [ASM](tv-fireplace/tv-fireplace.asm) | [Run](https://c64.p20.dev/program/tv-fireplace) |
 
 | Ripple Chamber | 2026-10-29 | Demo | Machine Code | `1`-`3`, `C`, Space, `Q` | Watch luminous waves flow through a chamber of custom multicolor pixel patterns. | [ASM](ripple-chamber/ripple-chamber.asm) | [Run](https://c64.p20.dev/program/ripple-chamber) |
+
+| Cat Vibing to Ievan Polkka | 2026-10-29 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | A white sprite cat bobs along to a three-voice SID arrangement of the traditional Finnish polka, beside a park-bench drummer. | [ASM](cat-vibing/cat-vibing.asm) | [Run](https://c64.p20.dev/program/cat-vibing) |
+
+Cat Vibing uses an original pixel drawing inspired by [CatJAM / Vibing Cat](https://knowyourmeme.com/memes/catjam-vibing-cat). Its SID arrangement plays the traditional Finnish melody **Ievan Polkka** (often written as “Levan Polka”), with newly written bass and percussion. See [Loituma's melody background](https://www.loituma.fi/en/ievan-polkka-en/) and the [traditional tune transcription](https://abcnotation.com/tunePage?a=trillian.mit.edu/~jc/music/abc/session/Oivan_Ilo/Ievan_Polkka/Ievan_Polkka-Bm-32-2/0000).
 
 ## Running the programs
 

@@ -1,5 +1,9 @@
 {
   "ripple-chamber": { "captureAfterMs": 3000 },
+  "cat-vibing": {
+    "actions": [{ "key": "SPACE", "waitAfterMs": 6500 }],
+    "captureAfterMs": 200
+  },
   "$default": {
     "readyTimeoutMs": 60000,
     "settleBeforeActionsMs": 5000,

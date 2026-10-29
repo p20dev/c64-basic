@@ -250,5 +250,11 @@
     "description": "Watch luminous waves flow through a chamber of custom multicolor pixel patterns.",
     "controls": [{"keys":["1","2","3"],"description":"Select wave speed"},{"keys":["C"],"description":"Change the color palette"},{"keys":["SPACE"],"description":"Pause or resume the waves"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "ripple-chamber/ripple-chamber.prg", "source": "ripple-chamber/ripple-chamber.asm"
+  },
+  {
+    "title": "Cat Vibing to Ievan Polkka", "category": "Demo", "language": "machine-code", "releaseDate": "2026-10-29",
+    "description": "A white sprite cat bobs along to a three-voice SID arrangement of the traditional Finnish polka, beside a park-bench drummer.",
+    "controls": [{"keys":["1","2","3"],"description":"Choose a relaxed, classic, or brisk polka tempo"},{"keys":["M"],"description":"Mute or restore the SID arrangement"},{"keys":["R"],"description":"Restart the tune and head bob together"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "cat-vibing/cat-vibing.prg", "source": "cat-vibing/cat-vibing.asm"
   }
 ]
