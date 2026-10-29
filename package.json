@@ -2,5 +2,5 @@
   "name": "c64-program-collection",
   "private": true,
   "type": "module",
-  "dependencies": { "sharp": "0.35.5" }
+  "dependencies": { "sharp": "0.35.5", "prismjs": "1.30.0" }
 }

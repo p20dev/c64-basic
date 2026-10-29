@@ -85,6 +85,15 @@ button:disabled { opacity: .5; cursor: wait; }
 .instructions-panel h2, .program-source-panel h2 { margin: 0 0 .85rem; font-size: 1rem; letter-spacing: .08em; text-transform: uppercase; }
 .program-source-panel pre { max-height: 600px; margin: 0; padding: 1rem; overflow: auto; border-radius: 6px; background: #0d0928; color: #d8d3f4; font: .85rem/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; tab-size: 4; }
 .program-source-panel pre:focus-visible { outline: 2px solid var(--c64-light-blue); outline-offset: 2px; }
+.program-source-panel code, .source-modal code { font: inherit; }
+.token.comment { color: #aaa5b8; font-style: italic; }
+.token.keyword { color: #c6b4ff; }
+.token.string { color: #a6e3ad; }
+.token.number { color: #f9c88b; }
+.token.function { color: #8bd5ef; }
+.token.property { color: #f5bde6; }
+.token.variable { color: #eed49f; }
+.token.operator, .token.punctuation { color: #cad3f5; }
 .control-list { display: grid; gap: .7rem; }
 .control-row { display: grid; grid-template-columns: minmax(150px, auto) 1fr; gap: 1rem; align-items: center; color: #d2cef0; }
 .key-group { display: flex; flex-wrap: wrap; gap: .35rem; }

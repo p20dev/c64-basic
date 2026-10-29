@@ -6,6 +6,10 @@ RUN npm ci --omit=dev && mkdir /app/screenshot-cache && chown node:node /app/scr
 COPY server.mjs ./server.mjs
 COPY screenshot-cache.mjs ./screenshot-cache.mjs
 COPY public ./public
+RUN mkdir -p public/vendor/prism \
+    && cp node_modules/prismjs/components/prism-core.min.js public/vendor/prism/ \
+    && cp node_modules/prismjs/components/prism-asm6502.min.js public/vendor/prism/ \
+    && cp node_modules/prismjs/LICENSE public/vendor/prism/LICENSE
 COPY . /programs
 
 ENV PORT=8080

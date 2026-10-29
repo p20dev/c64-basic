@@ -207,7 +207,7 @@ async function showSource(program) {
   try {
     const response = await fetch(`/api/source?path=${encodeURIComponent(program.path)}`, { cache: 'no-store' });
     if (!response.ok) throw new Error('The program source could not be loaded.');
-    sourceCode.querySelector('code').textContent = await response.text();
+    highlightSource(sourceCode.querySelector('code'), program, await response.text());
     sourceStatus.hidden = true;
     sourceCode.hidden = false;
   } catch (error) {
@@ -273,7 +273,7 @@ async function loadInlineSource(program) {
   try {
     const response = await fetch(`/api/source?path=${encodeURIComponent(program.path)}`, { cache: 'no-store' });
     if (!response.ok) throw new Error('The program source could not be loaded.');
-    listing.querySelector('code').textContent = await response.text();
+    highlightSource(listing.querySelector('code'), program, await response.text());
     message.hidden = true;
     listing.hidden = false;
   } catch (error) {
