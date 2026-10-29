@@ -264,6 +264,10 @@ async function loadInlineSource(program) {
   const heading = document.querySelector('#program-source-title');
   const message = document.querySelector('#program-source-status');
   const listing = document.querySelector('#program-source-code');
+  const copyButton = document.querySelector('#copy-program-source');
+  const downloadLink = document.querySelector('#download-program-source');
+  copyButton.disabled = true;
+  downloadLink.hidden = true;
   heading.textContent = program.language === 'machine-code' ? 'Assembly source' : 'BASIC V2 source';
   message.hidden = false;
   message.className = '';
@@ -276,11 +280,48 @@ async function loadInlineSource(program) {
     highlightSource(listing.querySelector('code'), program, await response.text());
     message.hidden = true;
     listing.hidden = false;
+    copyButton.disabled = false;
+    downloadLink.href = `/api/source?path=${encodeURIComponent(program.path)}`;
+    downloadLink.download = program.source.split('/').at(-1);
+    downloadLink.hidden = false;
   } catch (error) {
     message.className = 'error';
     message.textContent = error.message;
   }
 }
+
+let sourceCopyTimer;
+document.querySelector('#copy-program-source').addEventListener('click', async event => {
+  const button = event.currentTarget;
+  const feedback = document.querySelector('#source-copy-feedback');
+  const text = document.querySelector('#program-source-code code').textContent;
+  clearTimeout(sourceCopyTimer);
+  try {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+      await navigator.clipboard.writeText(text);
+    } catch {
+      // Support plain HTTP deployments as well as HTTPS and localhost.
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.cssText = 'position:fixed;left:-9999px;top:0';
+      document.body.append(textarea);
+      try {
+        textarea.select();
+        if (!document.execCommand('copy')) throw new Error('Copy failed');
+      } finally {
+        textarea.remove();
+        button.focus({ preventScroll: true });
+      }
+    }
+    button.textContent = 'Copied';
+    feedback.textContent = 'Source code copied to clipboard.';
+  } catch {
+    button.textContent = 'Try again';
+    feedback.textContent = 'Could not copy the source. Select the code or use Download instead.';
+  }
+  sourceCopyTimer = setTimeout(() => { button.textContent = 'Copy'; }, 2000);
+});
 
 function startEmulator(program) {
   library.hidden = true;

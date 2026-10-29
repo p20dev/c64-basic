@@ -85,6 +85,13 @@ button:disabled { opacity: .5; cursor: wait; }
 .instructions-panel h2, .program-source-panel h2 { margin: 0 0 .85rem; font-size: 1rem; letter-spacing: .08em; text-transform: uppercase; }
 .program-source-panel pre { max-height: 600px; margin: 0; padding: 1rem; overflow: auto; border-radius: 6px; background: #0d0928; color: #d8d3f4; font: .85rem/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; tab-size: 4; }
 .program-source-panel pre:focus-visible { outline: 2px solid var(--c64-light-blue); outline-offset: 2px; }
+.source-panel-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .85rem; }
+.source-panel-heading h2 { margin: 0; }
+.source-panel-actions { display: flex; gap: .5rem; }
+.source-action { display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: .4rem .7rem; border: 1px solid #b8b1e755; border-radius: 6px; background: var(--c64-blue); color: #fff; font: inherit; font-size: .8rem; line-height: 1.25; text-decoration: none; cursor: pointer; }
+.source-action:hover { background: var(--c64-light-blue); }
+.source-action:focus-visible { outline: 2px solid var(--c64-lightest-blue); outline-offset: 2px; }
+.source-action[hidden] { display: none; }
 .program-source-panel code, .source-modal code { font: inherit; }
 .token.comment { color: #aaa5b8; font-style: italic; }
 .token.keyword { color: #c6b4ff; }
