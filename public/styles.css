@@ -81,8 +81,10 @@ button:disabled { opacity: .5; cursor: wait; }
 .player-heading h1 { font-size: clamp(1.8rem, 5vw, 3rem); }
 .program-badges { margin-top: .85rem; }
 .program-page-description { max-width: 760px; margin: 1.5rem 0 0; color: #d2cef0; font-size: 1.08rem; line-height: 1.6; }
-.instructions-panel { max-width: 760px; margin: 1.5rem auto 0; padding: 1.1rem 1.25rem; border: 1px solid #b8b1e738; border-radius: 12px; background: #211a59d9; }
-.instructions-panel h2 { margin: 0 0 .85rem; font-size: 1rem; letter-spacing: .08em; text-transform: uppercase; }
+.instructions-panel, .program-source-panel { max-width: 760px; min-width: 0; margin: 1.5rem auto 0; padding: 1.1rem 1.25rem; border: 1px solid #b8b1e738; border-radius: 12px; background: #211a59d9; }
+.instructions-panel h2, .program-source-panel h2 { margin: 0 0 .85rem; font-size: 1rem; letter-spacing: .08em; text-transform: uppercase; }
+.program-source-panel pre { max-height: 600px; margin: 0; padding: 1rem; overflow: auto; border-radius: 6px; background: #0d0928; color: #d8d3f4; font: .85rem/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; tab-size: 4; }
+.program-source-panel pre:focus-visible { outline: 2px solid var(--c64-light-blue); outline-offset: 2px; }
 .control-list { display: grid; gap: .7rem; }
 .control-row { display: grid; grid-template-columns: minmax(150px, auto) 1fr; gap: 1rem; align-items: center; color: #d2cef0; }
 .key-group { display: flex; flex-wrap: wrap; gap: .35rem; }

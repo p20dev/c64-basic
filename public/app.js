@@ -260,12 +260,35 @@ function renderProgramDetails(program) {
   }
 }
 
+async function loadInlineSource(program) {
+  const heading = document.querySelector('#program-source-title');
+  const message = document.querySelector('#program-source-status');
+  const listing = document.querySelector('#program-source-code');
+  heading.textContent = program.language === 'machine-code' ? 'Assembly source' : 'BASIC V2 source';
+  message.hidden = false;
+  message.className = '';
+  message.textContent = 'Loading source…';
+  listing.hidden = true;
+  listing.querySelector('code').textContent = '';
+  try {
+    const response = await fetch(`/api/source?path=${encodeURIComponent(program.path)}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error('The program source could not be loaded.');
+    listing.querySelector('code').textContent = await response.text();
+    message.hidden = true;
+    listing.hidden = false;
+  } catch (error) {
+    message.className = 'error';
+    message.textContent = error.message;
+  }
+}
+
 function startEmulator(program) {
   library.hidden = true;
   player.hidden = false;
   document.title = `${program.title} — C64 Program Collection`;
   document.querySelector('#program-title').textContent = program.title;
   renderProgramDetails(program);
+  loadInlineSource(program);
 
   window.EJS_player = '#game';
   window.EJS_core = 'vice_x64sc';
