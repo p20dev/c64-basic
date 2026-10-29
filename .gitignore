@@ -1,2 +1,12 @@
 node_modules/
 output/playwright/
+
+# Local environment files (keep sanitized templates)
+.env
+.env.*
+*.env
+!.env.example
+!.env.sample
+!.env.template
+!.env.dist
+!.env.defaults
