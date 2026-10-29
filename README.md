@@ -87,6 +87,8 @@ The tools profile is opt-in and is not started by the normal app command.
 
 Every program has a recipe in `screenshots.json`. The recipe waits for the emulator, focuses it, dismisses the splash screen, performs any program-specific actions, and captures a clean 960×720 PNG from the browser compositor. Screenshots are stored as `screenshot.png` beside each program and appear automatically in the grid view; no web-app rebuild is required.
 
+The website serves screenshots as WebP at quality 90. PNG originals remain untouched. Converted images are generated on first request and retained in the persistent `screenshot-cache` Docker volume. Content-based URLs invalidate browser caches when an original changes; subsequent requests reuse the WebP file without converting it again.
+
 Capture screenshots that do not exist yet:
 
 ```text

@@ -2,11 +2,13 @@ import { createReadStream, existsSync, readFileSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { cachedScreenshot, screenshotVersion } from './screenshot-cache.mjs';
 
 const port = Number(process.env.PORT || 8080);
 const programDirectory = resolve(process.env.PROGRAM_DIRECTORY || fileURLToPath(new URL('./', import.meta.url)));
 const manifestPath = join(programDirectory, 'programs.json');
 const publicDirectory = fileURLToPath(new URL('./public/', import.meta.url));
+const screenshotCacheDirectory = resolve(process.env.SCREENSHOT_CACHE_DIRECTORY || '/tmp/c64-screenshots');
 
 function sendJson(response, status, value, headOnly = false) {
   const body = JSON.stringify(value);
@@ -51,7 +53,7 @@ function fetchPrograms() {
       slug,
       size: statSync(filePath).size,
       screenshot: screenshotStat
-        ? `/api/screenshot?slug=${encodeURIComponent(slug)}&v=${Math.trunc(screenshotStat.mtimeMs)}`
+        ? `/api/screenshot?slug=${encodeURIComponent(slug)}&v=${screenshotVersion(screenshotPath)}`
         : null
     };
   });
@@ -91,17 +93,32 @@ function sendSource(response, programPath, headOnly = false) {
   else createReadStream(filePath).pipe(response);
 }
 
-function sendScreenshot(response, slug, headOnly = false) {
-  const program = fetchPrograms().find(entry => entry.slug === slug && entry.screenshot);
-  if (!program) {
+async function sendScreenshot(request, response, slug, requestedVersion, headOnly = false) {
+  // Image requests validate only their target; do not stat the entire library.
+  const validSlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug);
+  const programs = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  const knownProgram = validSlug && programs.some(entry => entry.path?.split('/')[0] === slug);
+  const sourcePath = validSlug ? resolve(programDirectory, slug, 'screenshot.png') : '';
+  if (!knownProgram || !existsSync(sourcePath) || !statSync(sourcePath).isFile()) {
     sendJson(response, 404, { error: 'Program screenshot not found' }, headOnly);
     return;
   }
-  const filePath = resolve(programDirectory, slug, 'screenshot.png');
+  const version = screenshotVersion(sourcePath);
+  const filePath = await cachedScreenshot(sourcePath, screenshotCacheDirectory, version);
+  const etag = `"${version}"`;
+  const cacheControl = requestedVersion === version
+    ? 'public, max-age=31536000, immutable'
+    : 'public, max-age=0, must-revalidate';
+  if (request.headers['if-none-match'] === etag) {
+    response.writeHead(304, { ETag: etag, 'Cache-Control': cacheControl });
+    response.end();
+    return;
+  }
   response.writeHead(200, {
-    'Content-Type': 'image/png',
+    'Content-Type': 'image/webp',
     'Content-Length': statSync(filePath).size,
-    'Cache-Control': 'public, max-age=31536000, immutable'
+    'Cache-Control': cacheControl,
+    'ETag': etag
   });
   if (headOnly) response.end();
   else createReadStream(filePath).pipe(response);
@@ -140,7 +157,7 @@ createServer(async (request, response) => {
     } else if (url.pathname === '/api/source') {
       sendSource(response, url.searchParams.get('path') || '', headOnly);
     } else if (url.pathname === '/api/screenshot') {
-      sendScreenshot(response, url.searchParams.get('slug') || '', headOnly);
+      await sendScreenshot(request, response, url.searchParams.get('slug') || '', url.searchParams.get('v'), headOnly);
     } else if (!serveStatic(response, url.pathname, headOnly)) {
       sendJson(response, 404, { error: 'Not found' }, headOnly);
     }

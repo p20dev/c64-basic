@@ -7,6 +7,7 @@ services:
       PROGRAM_DIRECTORY: /programs
     volumes:
       - .:/programs:ro
+      - screenshot-cache:/app/screenshot-cache
     restart: unless-stopped
 
   assembler:
@@ -30,4 +31,7 @@ services:
       - .:/programs
     depends_on:
       - c64-basic
+
+volumes:
+  screenshot-cache:
 

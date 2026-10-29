@@ -1,0 +1,6 @@
+{
+  "name": "c64-program-collection",
+  "private": true,
+  "type": "module",
+  "dependencies": { "sharp": "0.35.5" }
+}
