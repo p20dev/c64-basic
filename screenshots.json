@@ -1,4 +1,5 @@
 {
+  "ripple-chamber": { "captureAfterMs": 3000 },
   "$default": {
     "readyTimeoutMs": 60000,
     "settleBeforeActionsMs": 5000,

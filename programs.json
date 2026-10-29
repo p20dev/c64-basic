@@ -244,5 +244,11 @@
     "description": "Settle beside a classic brick fireplace with dancing flames, glowing embers, rising sparks, and crackling SID sound.",
     "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or lively flames"},{"keys":["F"],"description":"Stoke the fire"},{"keys":["C"],"description":"Change the fireplace palette"},{"keys":["S"],"description":"Mute or restore the crackling sound"},{"keys":["SPACE"],"description":"Pause or resume the fire"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "tv-fireplace/tv-fireplace.prg", "source": "tv-fireplace/tv-fireplace.asm"
+  },
+  {
+    "title": "Ripple Chamber", "category": "Demo", "language": "machine-code", "releaseDate": "2026-10-29",
+    "description": "Watch luminous waves flow through a chamber of custom multicolor pixel patterns.",
+    "controls": [{"keys":["1","2","3"],"description":"Select wave speed"},{"keys":["C"],"description":"Change the color palette"},{"keys":["SPACE"],"description":"Pause or resume the waves"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "ripple-chamber/ripple-chamber.prg", "source": "ripple-chamber/ripple-chamber.asm"
   }
 ]

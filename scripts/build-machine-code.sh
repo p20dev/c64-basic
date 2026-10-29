@@ -17,7 +17,8 @@ for source in \
   infinite-road/infinite-road.asm \
   haunted-night/haunted-night.asm \
   happy-birthday-beca/happy-birthday-beca.asm \
-  tv-fireplace/tv-fireplace.asm
+  tv-fireplace/tv-fireplace.asm \
+  ripple-chamber/ripple-chamber.asm
 do
   output="${source%.asm}.prg"
   echo "Assembling $source -> $output"
