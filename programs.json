@@ -256,5 +256,11 @@
     "description": "A white sprite cat bobs along to a three-voice SID arrangement of the traditional Finnish polka, beside a park-bench drummer.",
     "controls": [{"keys":["1","2","3"],"description":"Choose a relaxed, classic, or brisk polka tempo"},{"keys":["M"],"description":"Mute or restore the SID arrangement"},{"keys":["R"],"description":"Restart the tune and head bob together"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "cat-vibing/cat-vibing.prg", "source": "cat-vibing/cat-vibing.asm"
+  },
+  {
+    "title": "Rickroll", "category": "Demo", "language": "machine-code", "releaseDate": "2026-10-30",
+    "description": "A pixel singer dances at a chrome microphone while a three-voice SID arrangement delivers a familiar eighties pop surprise.",
+    "controls": [{"keys":["1","2","3"],"description":"Choose a slow, classic, or fast groove"},{"keys":["M"],"description":"Mute or restore the SID music"},{"keys":["R"],"description":"Restart the tune and dance together"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "rickroll/rickroll.prg", "source": "rickroll/rickroll.asm"
   }
 ]

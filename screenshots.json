@@ -4,6 +4,10 @@
     "actions": [{ "key": "SPACE", "waitAfterMs": 6500 }],
     "captureAfterMs": 200
   },
+  "rickroll": {
+    "actions": [{ "key": "SPACE", "waitAfterMs": 7000 }],
+    "captureAfterMs": 250
+  },
   "$default": {
     "readyTimeoutMs": 60000,
     "settleBeforeActionsMs": 5000,

@@ -1,6 +1,6 @@
 # C64 Program Collection
 
-Forty-three small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
+Forty-four small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
 
 Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 
@@ -49,12 +49,13 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | Haunted Night | 2026-10-23 | Demo | Machine Code | `1`-`3`, `L`, `C`, `M`, Space, `Q` | Visit a moonlit haunted manor alive with ghosts, bats, lightning, and a sinister three-voice SID score. | [ASM](haunted-night/haunted-night.asm) | [Run](https://c64.p20.dev/program/haunted-night) |
 | Happy Birthday, Beca! | 2026-10-23 | Demo | Machine Code | `F`, `C`, `M`, Space, `Q` | Celebrate Beca's fifth birthday with cake, balloons, confetti, purrs, and a cheerful three-voice SID serenade. | [ASM](happy-birthday-beca/happy-birthday-beca.asm) | [Run](https://c64.p20.dev/program/happy-birthday-beca) |
 | TV Fireplace | 2026-10-24 | Demo | Machine Code | `1`-`3`, `F`, `C`, `S`, Space, `Q` | Settle beside a classic brick fireplace with dancing flames, glowing embers, rising sparks, and crackling SID sound. | [ASM](tv-fireplace/tv-fireplace.asm) | [Run](https://c64.p20.dev/program/tv-fireplace) |
-
 | Ripple Chamber | 2026-10-29 | Demo | Machine Code | `1`-`3`, `C`, Space, `Q` | Watch luminous waves flow through a chamber of custom multicolor pixel patterns. | [ASM](ripple-chamber/ripple-chamber.asm) | [Run](https://c64.p20.dev/program/ripple-chamber) |
-
 | Cat Vibing to Ievan Polkka | 2026-10-29 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | A white sprite cat bobs along to a three-voice SID arrangement of the traditional Finnish polka, beside a park-bench drummer. | [ASM](cat-vibing/cat-vibing.asm) | [Run](https://c64.p20.dev/program/cat-vibing) |
+| Rickroll | 2026-10-30 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | A pixel singer dances at a chrome microphone while a three-voice SID arrangement delivers a familiar eighties pop surprise. | [ASM](rickroll/rickroll.asm) | [Run](https://c64.p20.dev/program/rickroll) |
 
 Cat Vibing uses an original pixel drawing inspired by [CatJAM / Vibing Cat](https://knowyourmeme.com/memes/catjam-vibing-cat). Its SID arrangement plays the traditional Finnish melody **Ievan Polkka** (often written as “Levan Polka”), with newly written bass and percussion. See [Loituma's melody background](https://www.loituma.fi/en/ievan-polkka-en/) and the [traditional tune transcription](https://abcnotation.com/tunePage?a=trillian.mit.edu/~jc/music/abc/session/Oivan_Ilo/Ievan_Polkka/Ievan_Polkka-Bm-32-2/0000).
+
+Rickroll features original pixel art inspired by [Rick Astley's official video](https://www.youtube.com/watch?v=dQw4w9WgXc) and an instrumental SID arrangement of **Never Gonna Give You Up** by Mike Stock, Matt Aitken and Pete Waterman. Melody pitches were cross-checked against [Robson Couto's transcription reference](https://github.com/robsoncouto/arduino-songs/tree/master/nevergonnagiveyouup); the SID instruments, bass and percussion are arranged for this demo.
 
 ## Running the programs
 
