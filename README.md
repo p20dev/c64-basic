@@ -1,6 +1,6 @@
 # C64 Program Collection
 
-Forty-six small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
+Forty-seven small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
 
 Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 
@@ -54,6 +54,7 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | Rickroll | 2026-10-30 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | A pixel singer dances at a chrome microphone while a three-voice SID arrangement delivers a familiar eighties pop surprise. | [ASM](rickroll/rickroll.asm) | [Run](https://c64.p20.dev/program/rickroll) |
 | Orbital Reverie | 2026-11-01 | Demo | Machine Code | `1`-`3`, `C`, `M`, `R`, Space, `Q` | A rotating blue gas giant, tilted rings, and three orbiting moons with an original SID score. | [ASM](orbital-reverie/orbital-reverie.asm) | [Run](https://c64.p20.dev/program/orbital-reverie) |
 | Prism Sanctuary | 2026-11-01 | Demo | Machine Code | `1`-`3`, `C`, `M`, `R`, Space, `Q` | A rotating faceted crystal, mirrored floor, drifting sparks, and an original three-voice SID score. | [ASM](prism-sanctuary/prism-sanctuary.asm) | [Run](https://c64.p20.dev/program/prism-sanctuary) |
+| Midnight Aurora | 2026-11-01 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | Flowing northern lights, snowy mountains, lake reflections, and an original atmospheric SID score. | [ASM](midnight-aurora/midnight-aurora.asm) | [Run](https://c64.p20.dev/program/midnight-aurora) |
 
 Cat Vibing uses an original pixel drawing inspired by [CatJAM / Vibing Cat](https://knowyourmeme.com/memes/catjam-vibing-cat). Its SID arrangement plays the traditional Finnish melody **Ievan Polkka** (often written as “Levan Polka”), with newly written bass and percussion. See [Loituma's melody background](https://www.loituma.fi/en/ievan-polkka-en/) and the [traditional tune transcription](https://abcnotation.com/tunePage?a=trillian.mit.edu/~jc/music/abc/session/Oivan_Ilo/Ievan_Polkka/Ievan_Polkka-Bm-32-2/0000).
 

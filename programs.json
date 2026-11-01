@@ -274,5 +274,11 @@
     "description": "A faceted crystal turns above a luminous mirrored floor as drifting sparks accompany an original three-voice SID composition.",
     "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast crystal rotation"},{"keys":["C"],"description":"Change the crystal and floor palette"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "prism-sanctuary/prism-sanctuary.prg", "source": "prism-sanctuary/prism-sanctuary.asm"
+  },
+  {
+    "title": "Midnight Aurora", "category": "Demo", "language": "machine-code", "releaseDate": "2026-11-01",
+    "description": "Northern lights ripple above snow-capped mountains and a moonlit lake, accompanied by an original three-voice SID score.",
+    "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast aurora flow"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "midnight-aurora/midnight-aurora.prg", "source": "midnight-aurora/midnight-aurora.asm"
   }
 ]

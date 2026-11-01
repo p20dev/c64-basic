@@ -94,6 +94,11 @@
     ],
     "captureAfterMs": 250
   },
+  "midnight-aurora": {
+    "settleBeforeActionsMs": 18000,
+    "actions": [{ "key": "SPACE", "waitAfterMs": 6000 }],
+    "captureAfterMs": 500
+  },
   "prism-sanctuary": {
     "settleBeforeActionsMs": 15000,
     "actions": [{ "key": "SPACE", "waitAfterMs": 5000 }],

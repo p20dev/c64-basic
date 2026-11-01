@@ -22,7 +22,8 @@ for source in \
   cat-vibing/cat-vibing.asm \
   rickroll/rickroll.asm \
   orbital-reverie/orbital-reverie.asm \
-  prism-sanctuary/prism-sanctuary.asm
+  prism-sanctuary/prism-sanctuary.asm \
+  midnight-aurora/midnight-aurora.asm
 do
   output="${source%.asm}.prg"
   echo "Assembling $source -> $output"
