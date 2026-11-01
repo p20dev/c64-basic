@@ -94,6 +94,11 @@
     ],
     "captureAfterMs": 250
   },
+  "sunset-rally": {
+    "settleBeforeActionsMs": 18000,
+    "actions": [{ "key": "SPACE", "waitAfterMs": 4000 }],
+    "captureAfterMs": 300
+  },
   "cloud-nine": {
     "settleBeforeActionsMs": 18000,
     "actions": [{ "key": "SPACE", "waitAfterMs": 6500 }],

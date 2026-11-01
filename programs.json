@@ -292,5 +292,11 @@
     "description": "Three wing-top dancers ride a banking propeller plane through blue skies to an original, summery three-voice Eurodance SID score.",
     "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast flight animation"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "cloud-nine/cloud-nine.prg", "source": "cloud-nine/cloud-nine.asm"
+  },
+  {
+    "title": "Sunset Rally", "category": "Demo", "language": "machine-code", "releaseDate": "2026-11-01",
+    "description": "Cruise an endless winding road in a red sports car through forests, countryside, desert, and mountains to an original upbeat SID score.",
+    "controls": [{"keys":["A","D"],"description":"Move the sports car left or right"},{"keys":["1","2","3"],"description":"Select cruising speed"},{"keys":["N"],"description":"Skip to the next landscape"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume the drive and music"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "sunset-rally/sunset-rally.prg", "source": "sunset-rally/sunset-rally.asm"
   }
 ]

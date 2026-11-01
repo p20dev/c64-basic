@@ -25,7 +25,8 @@ for source in \
   prism-sanctuary/prism-sanctuary.asm \
   midnight-aurora/midnight-aurora.asm \
   solar-crown/solar-crown.asm \
-  cloud-nine/cloud-nine.asm
+  cloud-nine/cloud-nine.asm \
+  sunset-rally/sunset-rally.asm
 do
   output="${source%.asm}.prg"
   echo "Assembling $source -> $output"
