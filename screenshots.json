@@ -94,6 +94,11 @@
     ],
     "captureAfterMs": 250
   },
+  "cloud-nine": {
+    "settleBeforeActionsMs": 18000,
+    "actions": [{ "key": "SPACE", "waitAfterMs": 6500 }],
+    "captureAfterMs": 500
+  },
   "solar-crown": {
     "settleBeforeActionsMs": 18000,
     "actions": [{ "key": "SPACE", "waitAfterMs": 6500 }],

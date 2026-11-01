@@ -1,6 +1,6 @@
 # C64 Program Collection
 
-Forty-eight small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
+Forty-nine small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
 
 Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 
@@ -56,6 +56,9 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | Prism Sanctuary | 2026-11-01 | Demo | Machine Code | `1`-`3`, `C`, `M`, `R`, Space, `Q` | A rotating faceted crystal, mirrored floor, drifting sparks, and an original three-voice SID score. | [ASM](prism-sanctuary/prism-sanctuary.asm) | [Run](https://c64.p20.dev/program/prism-sanctuary) |
 | Midnight Aurora | 2026-11-01 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | Flowing northern lights, snowy mountains, lake reflections, and an original atmospheric SID score. | [ASM](midnight-aurora/midnight-aurora.asm) | [Run](https://c64.p20.dev/program/midnight-aurora) |
 | Solar Crown | 2026-11-01 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | A fiery red, orange, and yellow solar eclipse above scorched badlands, with an original SID score. | [ASM](solar-crown/solar-crown.asm) | [Run](https://c64.p20.dev/program/solar-crown) |
+| Cloud Nine | 2026-11-01 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | A banking plane, three wing-top dancers, blue skies, and an original Eurodance SID score. | [ASM](cloud-nine/cloud-nine.asm) | [Run](https://c64.p20.dev/program/cloud-nine) |
+
+Cloud Nine takes its wing-top dance imagery from [O-Zone’s official Dragostea din tei video](https://www.youtube.com/watch?v=jRx5PrAlUdY). Its SID music is an original Eurodance composition, not an arrangement or recording of the song.
 
 Cat Vibing uses an original pixel drawing inspired by [CatJAM / Vibing Cat](https://knowyourmeme.com/memes/catjam-vibing-cat). Its SID arrangement plays the traditional Finnish melody **Ievan Polkka** (often written as “Levan Polka”), with newly written bass and percussion. See [Loituma's melody background](https://www.loituma.fi/en/ievan-polkka-en/) and the [traditional tune transcription](https://abcnotation.com/tunePage?a=trillian.mit.edu/~jc/music/abc/session/Oivan_Ilo/Ievan_Polkka/Ievan_Polkka-Bm-32-2/0000).
 

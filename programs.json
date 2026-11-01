@@ -286,5 +286,11 @@
     "description": "A red, orange, and yellow solar corona writhes around an eclipsed sun above scorched badlands, driven by an original three-voice SID score.",
     "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast corona motion"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "solar-crown/solar-crown.prg", "source": "solar-crown/solar-crown.asm"
+  },
+  {
+    "title": "Cloud Nine", "category": "Demo", "language": "machine-code", "releaseDate": "2026-11-01",
+    "description": "Three wing-top dancers ride a banking propeller plane through blue skies to an original, summery three-voice Eurodance SID score.",
+    "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast flight animation"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "cloud-nine/cloud-nine.prg", "source": "cloud-nine/cloud-nine.asm"
   }
 ]
