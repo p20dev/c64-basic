@@ -268,5 +268,11 @@
     "description": "Drift past a rotating blue gas giant, luminous tilted rings, and three orbiting moons with an original three-voice SID score.",
     "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast planet rotation"},{"keys":["C"],"description":"Change the planet and ring palette"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "orbital-reverie/orbital-reverie.prg", "source": "orbital-reverie/orbital-reverie.asm"
+  },
+  {
+    "title": "Prism Sanctuary", "category": "Demo", "language": "machine-code", "releaseDate": "2026-11-01",
+    "description": "A faceted crystal turns above a luminous mirrored floor as drifting sparks accompany an original three-voice SID composition.",
+    "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast crystal rotation"},{"keys":["C"],"description":"Change the crystal and floor palette"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "prism-sanctuary/prism-sanctuary.prg", "source": "prism-sanctuary/prism-sanctuary.asm"
   }
 ]

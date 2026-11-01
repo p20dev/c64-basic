@@ -94,6 +94,11 @@
     ],
     "captureAfterMs": 250
   },
+  "prism-sanctuary": {
+    "settleBeforeActionsMs": 15000,
+    "actions": [{ "key": "SPACE", "waitAfterMs": 5000 }],
+    "captureAfterMs": 500
+  },
   "orbital-reverie": {
     "actions": [{ "key": "SPACE", "waitAfterMs": 6500 }],
     "captureAfterMs": 500
