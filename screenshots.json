@@ -94,6 +94,10 @@
     ],
     "captureAfterMs": 250
   },
+  "orbital-reverie": {
+    "actions": [{ "key": "SPACE", "waitAfterMs": 6500 }],
+    "captureAfterMs": 500
+  },
   "tv-fireplace": {
     "actions": [
       { "key": "SPACE", "waitAfterMs": 5000 }

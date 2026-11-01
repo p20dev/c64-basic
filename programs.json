@@ -262,5 +262,11 @@
     "description": "A pixel singer dances at a chrome microphone while a three-voice SID arrangement delivers a familiar eighties pop surprise.",
     "controls": [{"keys":["1","2","3"],"description":"Choose a slow, classic, or fast groove"},{"keys":["M"],"description":"Mute or restore the SID music"},{"keys":["R"],"description":"Restart the tune and dance together"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "rickroll/rickroll.prg", "source": "rickroll/rickroll.asm"
+  },
+  {
+    "title": "Orbital Reverie", "category": "Demo", "language": "machine-code", "releaseDate": "2026-11-01",
+    "description": "Drift past a rotating blue gas giant, luminous tilted rings, and three orbiting moons with an original three-voice SID score.",
+    "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast planet rotation"},{"keys":["C"],"description":"Change the planet and ring palette"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "orbital-reverie/orbital-reverie.prg", "source": "orbital-reverie/orbital-reverie.asm"
   }
 ]

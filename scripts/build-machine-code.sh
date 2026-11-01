@@ -20,7 +20,8 @@ for source in \
   tv-fireplace/tv-fireplace.asm \
   ripple-chamber/ripple-chamber.asm \
   cat-vibing/cat-vibing.asm \
-  rickroll/rickroll.asm
+  rickroll/rickroll.asm \
+  orbital-reverie/orbital-reverie.asm
 do
   output="${source%.asm}.prg"
   echo "Assembling $source -> $output"
