@@ -94,6 +94,11 @@
     ],
     "captureAfterMs": 250
   },
+  "solar-crown": {
+    "settleBeforeActionsMs": 18000,
+    "actions": [{ "key": "SPACE", "waitAfterMs": 6500 }],
+    "captureAfterMs": 500
+  },
   "midnight-aurora": {
     "settleBeforeActionsMs": 18000,
     "actions": [{ "key": "SPACE", "waitAfterMs": 6000 }],

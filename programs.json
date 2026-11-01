@@ -280,5 +280,11 @@
     "description": "Northern lights ripple above snow-capped mountains and a moonlit lake, accompanied by an original three-voice SID score.",
     "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast aurora flow"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "midnight-aurora/midnight-aurora.prg", "source": "midnight-aurora/midnight-aurora.asm"
+  },
+  {
+    "title": "Solar Crown", "category": "Demo", "language": "machine-code", "releaseDate": "2026-11-01",
+    "description": "A red, orange, and yellow solar corona writhes around an eclipsed sun above scorched badlands, driven by an original three-voice SID score.",
+    "controls": [{"keys":["1","2","3"],"description":"Select slow, medium, or fast corona motion"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "solar-crown/solar-crown.prg", "source": "solar-crown/solar-crown.asm"
   }
 ]
