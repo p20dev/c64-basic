@@ -1,6 +1,6 @@
 # C64 Program Collection
 
-Fifty small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
+Fifty-one small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
 
 Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 
@@ -58,6 +58,9 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | Solar Crown | 2026-11-01 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | A fiery red, orange, and yellow solar eclipse above scorched badlands, with an original SID score. | [ASM](solar-crown/solar-crown.asm) | [Run](https://c64.p20.dev/program/solar-crown) |
 | Cloud Nine | 2026-11-01 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | A banking plane, three wing-top dancers, blue skies, and an original Eurodance SID score. | [ASM](cloud-nine/cloud-nine.asm) | [Run](https://c64.p20.dev/program/cloud-nine) |
 | Sunset Rally | 2026-11-01 | Demo | Machine Code | `A`, `D`, `1`-`3`, `N`, `M`, `R`, Space, `Q` | An endless sports-car tour through forest, countryside, desert, and mountains with an original upbeat SID score. | [ASM](sunset-rally/sunset-rally.asm) | [Run](https://c64.p20.dev/program/sunset-rally) |
+| Wild Horizons | 2026-11-03 | Demo | Machine Code | `N`, `R`, `C`, `A`, `M`, Space, `Q` | Seeded mountain landscapes with snow caps, silhouettes, lake reflections, three palettes, and an original atmospheric SID score. | [ASM](wild-horizons/wild-horizons.asm) | [Run](https://c64.p20.dev/program/wild-horizons) |
+
+Wild Horizons draws terrain at runtime, rather than playing stored pictures. Its first landscape grows into view over roughly ten seconds; subsequent scenes are painted off-screen before appearing. `R` reproduces the same seeded terrain, `N` chooses a fresh seed, and `C` repaints it in daylight, dusk, or night colors. Automatic views are enabled initially; `A` toggles them.
 
 Sunset Rally is a touring demo, not a race: there are no collisions or finish line. Its four landscapes cycle automatically; `N` advances to the next area. It takes inspiration from [SEGA’s OutRun](https://segaages.sega.com/project/out-run/index.htm), with original graphics and SID music rather than copied game assets or soundtrack arrangements.
 

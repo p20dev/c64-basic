@@ -298,5 +298,11 @@
     "description": "Cruise an endless winding road in a red sports car through forests, countryside, desert, and mountains to an original upbeat SID score.",
     "controls": [{"keys":["A","D"],"description":"Move the sports car left or right"},{"keys":["1","2","3"],"description":"Select cruising speed"},{"keys":["N"],"description":"Skip to the next landscape"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["R"],"description":"Restart the original SID composition"},{"keys":["SPACE"],"description":"Pause or resume the drive and music"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "sunset-rally/sunset-rally.prg", "source": "sunset-rally/sunset-rally.asm"
+  },
+  {
+    "title": "Wild Horizons", "category": "Demo", "language": "machine-code", "releaseDate": "2026-11-03",
+    "description": "Generate fresh layered mountains, dark ridges, and mirrored lakes from seeded randomness while an original three-voice SID score plays.",
+    "controls": [{"keys":["N"],"description":"Generate a new random landscape"},{"keys":["R"],"description":"Regenerate the same seeded landscape"},{"keys":["C"],"description":"Repaint the scene in the next color palette"},{"keys":["A"],"description":"Toggle automatic landscape generation"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["SPACE"],"description":"Pause or resume the painter and music"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "wild-horizons/wild-horizons.prg", "source": "wild-horizons/wild-horizons.asm"
   }
 ]
