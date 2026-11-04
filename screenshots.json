@@ -94,6 +94,11 @@
     ],
     "captureAfterMs": 250
   },
+  "vector-atlas": {
+    "settleBeforeActionsMs": 18000,
+    "actions": [{ "key": "SPACE", "waitAfterMs": 4500 }],
+    "captureAfterMs": 300
+  },
   "wild-horizons": {
     "settleBeforeActionsMs": 18000,
     "actions": [{ "key": "SPACE", "waitAfterMs": 14000 }],

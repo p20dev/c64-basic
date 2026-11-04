@@ -1,6 +1,6 @@
 # C64 Program Collection
 
-Fifty-one small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
+Fifty-two small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
 
 Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 
@@ -59,6 +59,9 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | Cloud Nine | 2026-11-01 | Demo | Machine Code | `1`-`3`, `M`, `R`, Space, `Q` | A banking plane, three wing-top dancers, blue skies, and an original Eurodance SID score. | [ASM](cloud-nine/cloud-nine.asm) | [Run](https://c64.p20.dev/program/cloud-nine) |
 | Sunset Rally | 2026-11-01 | Demo | Machine Code | `A`, `D`, `1`-`3`, `N`, `M`, `R`, Space, `Q` | An endless sports-car tour through forest, countryside, desert, and mountains with an original upbeat SID score. | [ASM](sunset-rally/sunset-rally.asm) | [Run](https://c64.p20.dev/program/sunset-rally) |
 | Wild Horizons | 2026-11-03 | Demo | Machine Code | `N`, `R`, `C`, `A`, `M`, Space, `Q` | Seeded mountain landscapes with snow caps, silhouettes, lake reflections, three palettes, and an original atmospheric SID score. | [ASM](wild-horizons/wild-horizons.asm) | [Run](https://c64.p20.dev/program/wild-horizons) |
+| Vector Atlas | 2026-11-04 | Demo | Machine Code | `1`-`3`, `+`, `-`, `C`, `A`, `M`, Space, `Q` | Three rotating mathematical solids with perspective, depth-lit vector edges, and an original SID score. | [ASM](vector-atlas/vector-atlas.asm) | [Run](https://c64.p20.dev/program/vector-atlas) |
+
+Vector Atlas rasterizes edges into a hidden bitmap before displaying the finished frame. It stores projected vertex coordinates, not animated pictures. The cube has 8 vertices and 12 edges, the octahedron 6 and 12, and the icosahedron 12 and 30. Number keys select a solid and stop the automatic tour; `A` toggles the tour again.
 
 Wild Horizons draws terrain at runtime, rather than playing stored pictures. Its first landscape grows into view over roughly ten seconds; subsequent scenes are painted off-screen before appearing. `R` reproduces the same seeded terrain, `N` chooses a fresh seed, and `C` repaints it in daylight, dusk, or night colors. Automatic views are enabled initially; `A` toggles them.
 

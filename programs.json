@@ -304,5 +304,11 @@
     "description": "Generate fresh layered mountains, dark ridges, and mirrored lakes from seeded randomness while an original three-voice SID score plays.",
     "controls": [{"keys":["N"],"description":"Generate a new random landscape"},{"keys":["R"],"description":"Regenerate the same seeded landscape"},{"keys":["C"],"description":"Repaint the scene in the next color palette"},{"keys":["A"],"description":"Toggle automatic landscape generation"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["SPACE"],"description":"Pause or resume the painter and music"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "wild-horizons/wild-horizons.prg", "source": "wild-horizons/wild-horizons.asm"
+  },
+  {
+    "title": "Vector Atlas", "category": "Demo", "language": "machine-code", "releaseDate": "2026-11-04",
+    "description": "Explore a rotating cube, octahedron, and icosahedron with depth-lit wireframes, perspective projection, and an original three-voice SID score.",
+    "controls": [{"keys":["1","2","3"],"description":"Select cube, octahedron, or icosahedron; stop the automatic tour"},{"keys":["+","-"],"description":"Increase or decrease rotation speed"},{"keys":["C"],"description":"Change the vector palette"},{"keys":["A"],"description":"Toggle the automatic shape tour"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["SPACE"],"description":"Pause or resume rotation and music"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "vector-atlas/vector-atlas.prg", "source": "vector-atlas/vector-atlas.asm"
   }
 ]
