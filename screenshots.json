@@ -94,6 +94,11 @@
     ],
     "captureAfterMs": 250
   },
+  "rainbow-purr": {
+    "settleBeforeActionsMs": 18000,
+    "actions": [{ "key": "SPACE", "waitAfterMs": 5000 }],
+    "captureAfterMs": 300
+  },
   "vector-atlas": {
     "settleBeforeActionsMs": 18000,
     "actions": [{ "key": "SPACE", "waitAfterMs": 4500 }],

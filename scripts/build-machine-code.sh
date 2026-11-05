@@ -28,7 +28,8 @@ for source in \
   cloud-nine/cloud-nine.asm \
   sunset-rally/sunset-rally.asm \
   wild-horizons/wild-horizons.asm \
-  vector-atlas/vector-atlas.asm
+  vector-atlas/vector-atlas.asm \
+  rainbow-purr/rainbow-purr.asm
 do
   output="${source%.asm}.prg"
   echo "Assembling $source -> $output"

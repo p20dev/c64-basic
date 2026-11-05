@@ -310,5 +310,11 @@
     "description": "Explore a rotating cube, octahedron, and icosahedron with depth-lit wireframes, perspective projection, and an original three-voice SID score.",
     "controls": [{"keys":["1","2","3"],"description":"Select cube, octahedron, or icosahedron; stop the automatic tour"},{"keys":["+","-"],"description":"Increase or decrease rotation speed"},{"keys":["C"],"description":"Change the vector palette"},{"keys":["A"],"description":"Toggle the automatic shape tour"},{"keys":["M"],"description":"Mute or restore the SID score"},{"keys":["SPACE"],"description":"Pause or resume rotation and music"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "vector-atlas/vector-atlas.prg", "source": "vector-atlas/vector-atlas.asm"
+  },
+  {
+    "title": "Rainbow Purr", "category": "Demo", "language": "machine-code", "releaseDate": "2026-11-05",
+    "description": "A Nyan Cat-inspired pastry cat paddles through a parallax starfield with a six-color rainbow and an original, bouncy three-voice SID tune.",
+    "controls": [{"keys":["1","2","3"],"description":"Select relaxed, normal, or lively flight animation"},{"keys":["C"],"description":"Change the sky color"},{"keys":["T"],"description":"Toggle the rainbow trail"},{"keys":["M"],"description":"Mute or restore the SID tune"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "rainbow-purr/rainbow-purr.prg", "source": "rainbow-purr/rainbow-purr.asm"
   }
 ]
