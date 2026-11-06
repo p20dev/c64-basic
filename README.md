@@ -1,6 +1,6 @@
 # C64 Program Collection
 
-Fifty-three small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
+Fifty-four small, polished programs for the Commodore 64, written in stock Commodore BASIC V2 and 6502 machine code. The collection mixes arcade action, puzzles, simulations, mathematics, physics, creative tools, music, utilities, and visual effects. Every entry is self-contained and runs on an ordinary PAL or NTSC C64 without a cartridge or BASIC extension.
 
 Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 
@@ -61,6 +61,9 @@ Browse and run the collection at [c64.p20.dev](https://c64.p20.dev).
 | Wild Horizons | 2026-11-03 | Demo | Machine Code | `N`, `R`, `C`, `A`, `M`, Space, `Q` | Seeded mountain landscapes with snow caps, silhouettes, lake reflections, three palettes, and an original atmospheric SID score. | [ASM](wild-horizons/wild-horizons.asm) | [Run](https://c64.p20.dev/program/wild-horizons) |
 | Vector Atlas | 2026-11-04 | Demo | Machine Code | `1`-`3`, `+`, `-`, `C`, `A`, `M`, Space, `Q` | Three rotating mathematical solids with perspective, depth-lit vector edges, and an original SID score. | [ASM](vector-atlas/vector-atlas.asm) | [Run](https://c64.p20.dev/program/vector-atlas) |
 | Rainbow Purr | 2026-11-05 | Demo | Machine Code | `1`-`3`, `C`, `T`, `M`, Space, `Q` | A pastry-bodied sprite cat, six-color rainbow, parallax stars, and an original bouncy SID tune. | [ASM](rainbow-purr/rainbow-purr.asm) | [Run](https://c64.p20.dev/program/rainbow-purr) |
+| Reef Keeper | 2026-11-06 | Simulation | Machine Code | `F`, `C`, `A`, `1`-`3`, `L`, `M`, `R`, Space, `Q` | Care for four sprite fish: balance food, water, oxygen, and health in a planted tank with original SID music. | [ASM](reef-keeper/reef-keeper.asm) | [Run](https://c64.p20.dev/program/reef-keeper) |
+
+Reef Keeper is a fictional aquarium-care game, not animal-care guidance. Keep all three care meters at 25 or above to restore fish health. Feed modestly: overfeeding damages water quality. Water changes lower oxygen slightly; aeration restores it. Actions have cooldowns. Pace 1/2/3 advances a simulated second every 2/1/0.2 real seconds, and night halves hunger loss. Neglect can end the tank; `R` starts a fresh one. The four HUD bars show FOOD, WATER, AIR, and HEALTH.
 
 Rainbow Purr is an original C64 pixel-art homage to [Nyan Cat](https://www.nyan.cat/), created by Christopher Torres. Its eight-sprite cat, animation and SID composition are newly made for this collection; the music is not an arrangement or recording of the Nyan Cat song. It is an unofficial tribute, not an endorsed Nyan Cat release.
 

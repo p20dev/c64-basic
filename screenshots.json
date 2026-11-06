@@ -94,6 +94,11 @@
     ],
     "captureAfterMs": 250
   },
+  "reef-keeper": {
+    "settleBeforeActionsMs": 18000,
+    "actions": [{ "key": "SPACE", "waitAfterMs": 4000 }],
+    "captureAfterMs": 300
+  },
   "rainbow-purr": {
     "settleBeforeActionsMs": 18000,
     "actions": [{ "key": "SPACE", "waitAfterMs": 5000 }],

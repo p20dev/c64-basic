@@ -316,5 +316,11 @@
     "description": "A Nyan Cat-inspired pastry cat paddles through a parallax starfield with a six-color rainbow and an original, bouncy three-voice SID tune.",
     "controls": [{"keys":["1","2","3"],"description":"Select relaxed, normal, or lively flight animation"},{"keys":["C"],"description":"Change the sky color"},{"keys":["T"],"description":"Toggle the rainbow trail"},{"keys":["M"],"description":"Mute or restore the SID tune"},{"keys":["SPACE"],"description":"Pause or resume music and animation"},{"keys":["Q"],"description":"Return to BASIC"}],
     "path": "rainbow-purr/rainbow-purr.prg", "source": "rainbow-purr/rainbow-purr.asm"
+  },
+  {
+    "title": "Reef Keeper", "category": "Simulation", "language": "machine-code", "releaseDate": "2026-11-06",
+    "description": "Care for four colorful fish in a planted aquarium: balance food, clean water, oxygen, and health while a gentle original SID score plays.",
+    "controls": [{"keys":["F"],"description":"Feed a little food; overfeeding pollutes the water"},{"keys":["C"],"description":"Change water; briefly lowers oxygen and has a cooldown"},{"keys":["A"],"description":"Aerate the tank; has a cooldown"},{"keys":["1","2","3"],"description":"Select calm, normal, or challenge care pace"},{"keys":["L"],"description":"Toggle day/night lighting; fish slow down and eat less at night"},{"keys":["M"],"description":"Mute or restore the original SID score"},{"keys":["R"],"description":"Restart the tank, including after a loss"},{"keys":["SPACE"],"description":"Pause or resume the tank and music"},{"keys":["Q"],"description":"Return to BASIC"}],
+    "path": "reef-keeper/reef-keeper.prg", "source": "reef-keeper/reef-keeper.asm"
   }
 ]
